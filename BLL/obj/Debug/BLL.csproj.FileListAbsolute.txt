@@ -1,0 +1,12 @@
+D:\SCRUMPoker\SPWPF\BLL\bin\Debug\BLL.dll
+D:\SCRUMPoker\SPWPF\BLL\bin\Debug\BLL.pdb
+D:\SCRUMPoker\SPWPF\BLL\bin\Debug\DAL.dll
+D:\SCRUMPoker\SPWPF\BLL\bin\Debug\EntityFramework.dll
+D:\SCRUMPoker\SPWPF\BLL\bin\Debug\DAL.pdb
+D:\SCRUMPoker\SPWPF\BLL\bin\Debug\DAL.dll.config
+D:\SCRUMPoker\SPWPF\BLL\bin\Debug\EntityFramework.xml
+D:\SCRUMPoker\SPWPF\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+D:\SCRUMPoker\SPWPF\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\SCRUMPoker\SPWPF\BLL\obj\Debug\BLL.csproj.CopyComplete
+D:\SCRUMPoker\SPWPF\BLL\obj\Debug\BLL.dll
+D:\SCRUMPoker\SPWPF\BLL\obj\Debug\BLL.pdb

@@ -78,9 +78,8 @@ namespace BLL
             if (returnedUser == null)
                 return null;
             else
-            return new UserDTO()
-            { Id=returnedUser.Id,IsUserOnline=returnedUser.IsUserOnline,Password=returnedUser.Password,UserName=returnedUser.Password }
-            );
+                return new UserDTO()
+                { Id = returnedUser.Id, IsUserOnline = returnedUser.IsUserOnline, Password = returnedUser.Password, UserName = returnedUser.Password };
         }
     
         #endregion

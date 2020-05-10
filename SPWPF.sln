@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.1082
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scrum Poker", "Scrum Poker.csproj", "{71DF6B7A-1498-4786-B7F9-A0A53AF93DBC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{96AEF85B-9A38-4CEB-842F-1720E7AF697A} = {96AEF85B-9A38-4CEB-842F-1720E7AF697A}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "..\DAL\DAL.csproj", "{A2D52D93-4859-428F-90B2-194E0A682D21}"
 EndProject

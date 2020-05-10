@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="StepChat.StepChatUI.CustomUIElement.WindowControlPanel.WindowControlPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StepChat.StepChatUI.CustomUIElement.WindowControlPanel"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+            TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+             MinHeight="25" MaxHeight="25">
+
+    <Grid>
+        <DockPanel Grid.Row="0" Background="{DynamicResource PrimaryHueMidBrush}" LastChildFill="False" >
+            <Label Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" FontSize="15" VerticalAlignment="Center" FontFamily="Ravie">Scrum Poker++</Label>
+            <Button WindowChrome.IsHitTestVisibleInChrome="True" Margin="0,0,5,0" DockPanel.Dock="Right" Width="20" Height="20" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"  Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" Click="Button_Click">
+                <materialDesign:PackIcon Kind="WindowClose" />
+            </Button>
+            <Button WindowChrome.IsHitTestVisibleInChrome="True" Margin="0,0,5,0" DockPanel.Dock="Right" Width="20" Height="20"  BorderThickness="0"  Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"  Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" Click="Button_Click_1">
+                <materialDesign:PackIcon Kind="WindowMinimize" />
+            </Button>
+
+
+        </DockPanel>
+
+    </Grid>
+
+</UserControl>
