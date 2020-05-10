@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SPWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="800" Width="1200"
         
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -14,10 +14,11 @@
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
      Background="{DynamicResource MaterialDesignPaper}"
-     FontFamily="{DynamicResource MaterialDesignFont}"
-     >
-    
-    <Grid>
-        
+     FontFamily="{DynamicResource MaterialDesignFont}" >
+
+    <Grid Name="spMainWindow"   Background="{DynamicResource MaterialDesignPaper}">
+        <Grid Name="spLoginWindow" Background="{DynamicResource MaterialDesignPaper}">
+
+        </Grid>
     </Grid>
 </Window>

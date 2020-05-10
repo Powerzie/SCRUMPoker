@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1082
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPWPF", "SPWPF.csproj", "{71DF6B7A-1498-4786-B7F9-A0A53AF93DBC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scrum Poker", "Scrum Poker.csproj", "{71DF6B7A-1498-4786-B7F9-A0A53AF93DBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "..\DAL\DAL.csproj", "{A2D52D93-4859-428F-90B2-194E0A682D21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{71DF6B7A-1498-4786-B7F9-A0A53AF93DBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71DF6B7A-1498-4786-B7F9-A0A53AF93DBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71DF6B7A-1498-4786-B7F9-A0A53AF93DBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2D52D93-4859-428F-90B2-194E0A682D21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2D52D93-4859-428F-90B2-194E0A682D21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2D52D93-4859-428F-90B2-194E0A682D21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2D52D93-4859-428F-90B2-194E0A682D21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

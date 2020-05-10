@@ -1,3 +1,7 @@
+D:\SCRUMPoker\SPWPF\obj\Debug\MainWindow.g.cs
+D:\SCRUMPoker\SPWPF\obj\Debug\App.g.cs
+D:\SCRUMPoker\SPWPF\obj\Debug\SPWPF_MarkupCompile.cache
+D:\SCRUMPoker\SPWPF\obj\Debug\SPWPF_MarkupCompile.lref
 D:\SCRUMPoker\SPWPF\bin\Debug\SPWPF.exe.config
 D:\SCRUMPoker\SPWPF\bin\Debug\SPWPF.exe
 D:\SCRUMPoker\SPWPF\bin\Debug\SPWPF.pdb
@@ -6,11 +10,6 @@ D:\SCRUMPoker\SPWPF\bin\Debug\MaterialDesignThemes.Wpf.dll
 D:\SCRUMPoker\SPWPF\bin\Debug\MaterialDesignColors.pdb
 D:\SCRUMPoker\SPWPF\bin\Debug\MaterialDesignThemes.Wpf.pdb
 D:\SCRUMPoker\SPWPF\bin\Debug\MaterialDesignThemes.Wpf.xml
-D:\SCRUMPoker\SPWPF\obj\Debug\SPWPF.csprojAssemblyReference.cache
-D:\SCRUMPoker\SPWPF\obj\Debug\MainWindow.g.cs
-D:\SCRUMPoker\SPWPF\obj\Debug\App.g.cs
-D:\SCRUMPoker\SPWPF\obj\Debug\SPWPF_MarkupCompile.cache
-D:\SCRUMPoker\SPWPF\obj\Debug\SPWPF_MarkupCompile.lref
 D:\SCRUMPoker\SPWPF\obj\Debug\App.baml
 D:\SCRUMPoker\SPWPF\obj\Debug\MainWindow.baml
 D:\SCRUMPoker\SPWPF\obj\Debug\SPWPF.g.resources
@@ -20,3 +19,4 @@ D:\SCRUMPoker\SPWPF\obj\Debug\SPWPF.csproj.CoreCompileInputs.cache
 D:\SCRUMPoker\SPWPF\obj\Debug\SPWPF.csproj.CopyComplete
 D:\SCRUMPoker\SPWPF\obj\Debug\SPWPF.exe
 D:\SCRUMPoker\SPWPF\obj\Debug\SPWPF.pdb
+D:\SCRUMPoker\SPWPF\obj\Debug\SPWPF.csprojAssemblyReference.cache
