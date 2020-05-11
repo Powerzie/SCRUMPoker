@@ -1,0 +1,167 @@
+﻿<Window x:Class="SPWPF.MVVM.VIew.MainWindow" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SPWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="504.076" Width="365.208"
+           WindowStyle="None"
+        AllowsTransparency="True"
+        
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:windowcontrolpanel="clr-namespace:StepChat.StepChatUI.CustomUIElement.WindowControlPanel"
+        xmlns:viewmodel="clr-namespace:SPWPF.MVVM.ViewModel.MainWindowViewModel"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource PrimaryHueLightBrush}"
+     FontFamily="{DynamicResource MaterialDesignFont}" WindowStartupLocation="CenterOwner"  >
+
+    <Window.DataContext>
+        <viewmodel:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26"/>
+            <RowDefinition Height="86*"/>
+        </Grid.RowDefinitions>
+
+        <windowcontrolpanel:WindowControlPanel Margin="0,0,0,1" x:Name="windowControlPanel"></windowcontrolpanel:WindowControlPanel>
+        <!--<Grid Name="spMainWindow"   Background="{DynamicResource MaterialDesignPaper}">
+        </Grid>-->
+
+        <Grid Grid.Row="1" Grid.Column="0"  Name="spLoginRegistrationWindow" Background="#FFD6E0E4" Visibility="Visible" Grid.RowSpan="2">
+            <Grid Grid.RowSpan="3" Name="LoginGrid" Visibility="Visible">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="36*"/>
+                    <RowDefinition Height="221*"/>
+                    <RowDefinition Height="19*"/>
+                </Grid.RowDefinitions>
+                <DockPanel   LastChildFill="False"    Grid.Row="1"  >
+                    <TextBox DockPanel.Dock="Top" FontSize="30" Margin="35"
+  x:Name="NameTextBox"
+  materialDesign:HintAssist.Hint="Login"
+>
+                        <TextBox.Text>
+                            <Binding
+      Path="Name"
+      UpdateSourceTrigger="PropertyChanged">
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <PasswordBox FontSize="30" DockPanel.Dock="Top" Margin="35"
+  x:Name="PasswordBox"
+  materialDesign:HintAssist.Hint="Password"
+  materialDesign:TextFieldAssist.HasClearButton="True"
+ />
+                    <DockPanel DockPanel.Dock="Top">
+                        <Button Margin="30,0,0,0" DockPanel.Dock="Left" Width="140" FontSize="20" Content="Login"   Command="{Binding MainWindowLoginButtonClick}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Border  CornerRadius="15" Background="{DynamicResource PrimaryHueMidBrush}">
+                                        </Border>
+                                        <ContentPresenter HorizontalAlignment="Center"  
+                                VerticalAlignment="Center"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Button.Template>
+
+                        </Button>
+                        <Button DockPanel.Dock="Right" Margin="0,0,30,0" Width="140" FontSize="20" Content="Register" Command="{Binding MainWindowRegisterButtonClick}"   >
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Border  CornerRadius="15" Background="{DynamicResource PrimaryHueMidBrush}">
+                                        </Border>
+                                        <ContentPresenter HorizontalAlignment="Center"  
+                                VerticalAlignment="Center"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </DockPanel>
+                 
+                </DockPanel>
+                
+                <Label Grid.Row="3" HorizontalAlignment="Right" FontSize="12" Opacity="0.5" Width="66">Version 0.1</Label>
+            </Grid>
+            <Grid Grid.RowSpan="3" Name="RegisterGrid" Visibility="Collapsed">
+                <DockPanel   LastChildFill="False"    Grid.Row="1"  >
+                    <TextBox DockPanel.Dock="Top" FontSize="30" Margin="35"
+  x:Name="RegisterNameTextBox"
+  materialDesign:HintAssist.Hint="Login"
+>
+                        <TextBox.Text>
+                            <Binding
+      Path="Name"
+      UpdateSourceTrigger="PropertyChanged">
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <TextBox DockPanel.Dock="Top" FontSize="30" Margin="35"
+                      x:Name="RegisterEmailTextBox"
+                      materialDesign:HintAssist.Hint="Email"
+>
+                        <TextBox.Text>
+                            <Binding
+      Path="Name"
+      UpdateSourceTrigger="PropertyChanged">
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <DockPanel DockPanel.Dock="Top">
+                        <PasswordBox FontSize="30" DockPanel.Dock="Left" Margin="15"
+  x:Name="RegisterPasswordBox"
+  materialDesign:HintAssist.Hint="Password"
+  materialDesign:TextFieldAssist.HasClearButton="True"
+ />
+                        <PasswordBox FontSize="30" DockPanel.Dock="Left" Margin="15" 
+  x:Name="RegisterRepeatedPasswordBox"
+                                 materialDesign:HintAssist.HelperText="Repeat password"
+  materialDesign:HintAssist.Hint="Password"
+  materialDesign:TextFieldAssist.HasClearButton="True"
+ />
+                    </DockPanel>
+               
+                    <DockPanel DockPanel.Dock="Top" Margin="0,50,0,0">
+                        <Button Margin="30,0,0,0" DockPanel.Dock="Left" Width="140" FontSize="20" Content="Accept"  >
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Border  CornerRadius="15" Background="{DynamicResource PrimaryHueMidBrush}">
+                                        </Border>
+                                        <ContentPresenter HorizontalAlignment="Center"  
+                                VerticalAlignment="Center"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Button.Template>
+
+                        </Button>
+                        <Button DockPanel.Dock="Right" Margin="0,0,30,0" Width="140" FontSize="20" Content="Back"   >
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Border  CornerRadius="15" Background="{DynamicResource PrimaryHueMidBrush}">
+                                        </Border>
+                                        <ContentPresenter HorizontalAlignment="Center"  
+                                VerticalAlignment="Center"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </DockPanel>
+
+                </DockPanel>
+            </Grid>
+        </Grid>
+
+    </Grid>
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome ResizeBorderThickness="3"/>
+    </WindowChrome.WindowChrome>
+</Window>

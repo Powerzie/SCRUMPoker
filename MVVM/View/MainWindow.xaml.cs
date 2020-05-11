@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace SPWPF
+namespace SPWPF.MVVM.VIew
 {
     public partial class MainWindow : Window
     {
