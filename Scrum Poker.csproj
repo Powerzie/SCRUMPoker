@@ -85,7 +85,9 @@
     <Compile Include="CustomControls\WindowControlPanel\WindowControlPanel.xaml.cs">
       <DependentUpon>WindowControlPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Hashing\Class1.cs" />
     <Compile Include="MVVM\Model\Model.cs" />
+    <Compile Include="MVVM\ViewModel\LoginAndRegistrationViewModel\MainWindowViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainWindowViewModel\MainWindowViewModel.cs" />
     <Compile Include="MVVM\View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -144,9 +146,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MVVM\ViewModel\LoginAndRegistrationViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.3.1.2-ci1420\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.3.1.2-ci1420\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

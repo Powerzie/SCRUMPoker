@@ -6,6 +6,7 @@ D:\SCRUMPoker\SPWPF\bin\Debug\MaterialDesignThemes.Wpf.dll
 D:\SCRUMPoker\SPWPF\bin\Debug\MaterialDesignColors.pdb
 D:\SCRUMPoker\SPWPF\bin\Debug\MaterialDesignThemes.Wpf.pdb
 D:\SCRUMPoker\SPWPF\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\SCRUMPoker\SPWPF\obj\Debug\Scrum Poker.csprojAssemblyReference.cache
 D:\SCRUMPoker\SPWPF\obj\Debug\CustomControls\WindowControlPanel\WindowControlPanel.g.cs
 D:\SCRUMPoker\SPWPF\obj\Debug\MVVM\View\MainWindow.g.cs
 D:\SCRUMPoker\SPWPF\obj\Debug\App.g.cs
@@ -22,4 +23,3 @@ D:\SCRUMPoker\SPWPF\obj\Debug\Scrum Poker.csproj.CoreCompileInputs.cache
 D:\SCRUMPoker\SPWPF\obj\Debug\Scrum Poker.csproj.CopyComplete
 D:\SCRUMPoker\SPWPF\obj\Debug\SPWPF.exe
 D:\SCRUMPoker\SPWPF\obj\Debug\SPWPF.pdb
-D:\SCRUMPoker\SPWPF\obj\Debug\Scrum Poker.csprojAssemblyReference.cache
