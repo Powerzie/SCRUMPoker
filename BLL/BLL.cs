@@ -101,21 +101,15 @@ namespace BLL
         {
             return DAL.DeleteRoomById(id);
         }
-        public List<RoomDTO> GetRoomsByOwnerId(int id)
+        public RoomDTO GetRoomByOwnerId(int id)
         {
-            List<Room> returnedRooms = DAL.GetRoomsByOwnerId(id);
+           Room returnedRooms = DAL.GetRoomByOwnerId(id);
             if (returnedRooms == null)
                 return null;
             else
             {
-                List<RoomDTO> roomsToReturn = new List<RoomDTO>();
-                foreach(var it in returnedRooms)
-                {
-                    roomsToReturn.Add(new RoomDTO()
-                    { Id = it.Id, NameOfRoom = it.NameOfRoom, OwnerId = it.OwnerId, RoomCode = it.RoomCode }
-                    );
-                }
-                return roomsToReturn;
+                return new RoomDTO()
+                { Id = returnedRooms.Id, NameOfRoom = returnedRooms.NameOfRoom, OwnerId = returnedRooms.OwnerId, RoomCode = returnedRooms.RoomCode };
             }
         }
         public UserDTO GetRoomOwner(int roomCode)
@@ -127,7 +121,25 @@ namespace BLL
                 return new UserDTO()
                 { Id = returnedUser.Id, IsUserOnline = returnedUser.IsUserOnline, Password = returnedUser.Password, UserName = returnedUser.Password };
         }
-    
-        #endregion
-    }
+        public RoomDTO GetRoomByCode(int code)
+        {
+            Room returnedRoom = DAL.GetRoomByCode(code);
+            if (returnedRoom == null)
+                return null;
+            else
+                return new RoomDTO()
+                { Id = returnedRoom.Id, NameOfRoom = returnedRoom.NameOfRoom, OwnerId = returnedRoom.OwnerId, RoomCode = returnedRoom.RoomCode };
+        }
+        public RoomDTO JoinRoom(int userId, int roomCode)
+        {
+            Room returnedRoom = DAL.JoinRoom(userId,roomCode);
+            if (returnedRoom == null)
+                return null;
+            else
+                return new RoomDTO()
+                { Id = returnedRoom.Id, NameOfRoom = returnedRoom.NameOfRoom, OwnerId = returnedRoom.OwnerId, RoomCode = returnedRoom.RoomCode };
+        }
+
+            #endregion
+        }
 }

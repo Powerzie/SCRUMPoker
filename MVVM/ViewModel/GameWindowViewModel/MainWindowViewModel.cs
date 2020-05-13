@@ -46,6 +46,7 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
                 return new DelegateClickCommand((roomName) =>
                 {
                     Service.CreateNewRoom(CurrentLoginedUser.Id, (roomName as TextBox).Text);
+                    OpenGameMenu();
                 });
             }
         }
