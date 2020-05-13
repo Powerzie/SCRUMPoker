@@ -37,6 +37,8 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
         private Visibility _registerGridVisability { get; set; }
         private Visibility _loginRegisterVisability { get; set; }
         private Visibility _gameWindowVisability { get; set; }
+        private Visibility _loginWindowVisability { get; set; }
+        
         private WindowStates currentWindowState;
 
         private int _windowWidth { get; set; }
@@ -104,7 +106,11 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
             get { return _gameWindowVisability; }
             set { _gameWindowVisability = value; OnPropertyChanged(nameof(GameWindowVisability)); }
         }
-       
+        public Visibility LoginWindowVisability
+        {
+            get { return _loginWindowVisability; }
+            set { _loginWindowVisability = value; OnPropertyChanged(nameof(LoginWindowVisability)); }
+        }
 
         public int WindowHeight { get { return _windowHeight; } set { _windowHeight = value; OnPropertyChanged(nameof(WindowHeight)); } }
         public int WindowWidth { get { return _windowWidth; } set { _windowWidth = value; OnPropertyChanged(nameof(WindowWidth)); } }
@@ -191,12 +197,12 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
                     break;
                 case WindowStates.GameWindow:
                     WindowHeight = 800;
-                    MaxHeightRange = WindowHeight + 30;
-                    MinHeightRange = WindowHeight - 30;
+                    MaxHeightRange = WindowHeight + 90;
+                    MinHeightRange = WindowHeight - 90;
 
                     WindowWidth = 1500;
-                    MaxWidthRange = WindowWidth + 30;
-                    MinWidthRange = WindowWidth - 30;
+                    MaxWidthRange = WindowWidth + 90;
+                    MinWidthRange = WindowWidth - 90;
 
                     break;
                 default:
@@ -223,8 +229,10 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
                 {
                     if (hasher.GetHashedString(VerificationCodeTextBox) == verCode)
                     {
-                        Service.RegisterNewUser(LoginEnterText, EmailEnterText, passwordHash);
-                        OpenLoginAndRegisterMenu();
+                       if( Service.RegisterNewUser(LoginEnterText, EmailEnterText, passwordHash))
+                        {
+                            OpenLoginAndRegisterMenu();
+                        }
                     }
                     else
                     {

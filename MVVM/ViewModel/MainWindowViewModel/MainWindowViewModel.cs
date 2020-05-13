@@ -79,8 +79,9 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
         private void OpenLoginAndRegisterMenu  ()
         {
             LoginRegisterVisability = Visibility.Visible;
-            EmailCodeConfirmGrid = Visibility.Hidden;
-            RegisterGridVisability = Visibility.Hidden;
+            LoginWindowVisability = Visibility.Visible;
+            EmailCodeConfirmGrid = Visibility.Collapsed;
+            RegisterGridVisability = Visibility.Collapsed;
         }
         private void OpenRegistrationWindow()
         {

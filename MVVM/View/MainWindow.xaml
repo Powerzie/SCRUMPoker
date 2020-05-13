@@ -7,11 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" 
            WindowStyle="None"
-        d:DesignWidth="960"
+        d:DesignWidth="1500"
         AllowsTransparency="True"
+        
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:windowcontrolpanel="clr-namespace:StepChat.StepChatUI.CustomUIElement.WindowControlPanel"
         xmlns:viewmodel="clr-namespace:SPWPF.MVVM.ViewModel.MainWindowViewModel"
+        xmlns:roommember="clr-namespace:SPWPF.CustomControls.RoomMember"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
      TextElement.FontSize="13"
@@ -37,15 +39,27 @@
             <RowDefinition Height="26"/>
             <RowDefinition Height="86*"/>
         </Grid.RowDefinitions>
+        <windowcontrolpanel:WindowControlPanel  x:Name="windowControlPanel"></windowcontrolpanel:WindowControlPanel>
 
-        <windowcontrolpanel:WindowControlPanel Margin="0,0,0,1" x:Name="windowControlPanel"></windowcontrolpanel:WindowControlPanel>
-      
-        <Grid Grid.Row="1" Name="GameWindow" Visibility="{Binding GameWindowVisability}" Grid.RowSpan="2">
+        <Grid Grid.Row="1" Name="GameWindow"  Visibility="{Binding GameWindowVisability}" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="36*"/>
-                <RowDefinition Height="221*"/>
-                <RowDefinition Height="19*"/>
             </Grid.RowDefinitions>
+            <Border Grid.Row="0"  HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,-1,0,0"  Background="Gray">
+                <ItemsControl  Style="{x:Null}" Focusable="False" Margin="0,-2,1,0" ItemsSource="{Binding ListOfChatMembers}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <roommember:RoomMember Margin="0,0,0,5" ></roommember:RoomMember>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+
+                </ItemsControl>
+
+            </Border>
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="0"  Name="spLoginRegistrationWindow" d:IsHidden="True" Background="#FFD6E0E4" Visibility="{Binding LoginRegisterVisability}" Grid.RowSpan="2">
@@ -54,7 +68,7 @@
                 <RowDefinition Height="221*"/>
                 <RowDefinition Height="19*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.RowSpan="2" Name="LoginGrid" Visibility="Visible">
+            <Grid Grid.RowSpan="2" Name="LoginGrid" Visibility="{Binding LoginWindowVisability,Mode=TwoWay}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="36*"/>
                     <RowDefinition Height="221*"/>

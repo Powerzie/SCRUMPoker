@@ -68,6 +68,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CustomControls\RoomMember\RoomMember.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomControls\WindowControlPanel\WindowControlPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -85,11 +89,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\RoomMember\RoomMember.xaml.cs">
+      <DependentUpon>RoomMember.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\WindowControlPanel\WindowControlPanel.xaml.cs">
       <DependentUpon>WindowControlPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Hashing\PasswordHasher.cs" />
     <Compile Include="MVVM\Model\Model.cs" />
+    <Compile Include="MVVM\ViewModel\GameWindowViewModel\MainWindowViewModel.cs" />
     <Compile Include="MVVM\ViewModel\LoginAndRegistrationViewModel\MainWindowViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainWindowViewModel\MainWindowViewModel.cs" />
     <Compile Include="MVVM\View\MainWindow.xaml.cs">

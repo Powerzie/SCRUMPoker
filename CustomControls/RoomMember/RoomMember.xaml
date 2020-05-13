@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="SPWPF.CustomControls.RoomMember.RoomMember"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SPWPF.CustomControls.RoomMember"
+             mc:Ignorable="d" Height="60.868" Width="250.346"
+             
+                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:windowcontrolpanel="clr-namespace:StepChat.StepChatUI.CustomUIElement.WindowControlPanel"
+        xmlns:viewmodel="clr-namespace:SPWPF.MVVM.ViewModel.MainWindowViewModel"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+
+        
+     FontFamily="{DynamicResource MaterialDesignFont}"  
+             >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="43*"/>
+            <ColumnDefinition Width="207*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="79*"/>
+        </Grid.RowDefinitions>
+        <Border   Background="{DynamicResource PrimaryHueDarkBrush}" CornerRadius="0,0,30,30" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="145*"/>
+                    <ColumnDefinition Width="51*"/>
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Name="CrownImage" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Height="24" Width="24" Foreground="Gold" Kind="Crown" />
+                <Border Grid.Column="0" Grid.ColumnSpan="2" Name="borderOnlineChecker" Background="#FF147214" CornerRadius="0,30,30,0" >
+                    <Label FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" FontWeight="Bold" FontFamily="Cooper Black"></Label>
+                </Border>
+
+                <Border Grid.Column="0" Background="#FF0C570C" CornerRadius="0,30,30,0">
+                    <Label Name="ShortNameLabel" FontSize="45" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Cooper Black"></Label>
+                </Border>
+                <Label Name="FullNameLabel" Grid.Column="2" VerticalAlignment="Center" Margin="10,16,0,7" FontSize="25" FontWeight="Bold" Height="38" Grid.ColumnSpan="2" >Obema</Label>
+                <Border  Name="choisedNumBorder" Grid.Column="3" CornerRadius="0,0,30,0" Background="{DynamicResource PrimaryHueMidBrush}">
+
+                    <Label Name="choisedNum" FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"></Label>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
