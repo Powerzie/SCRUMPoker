@@ -68,7 +68,7 @@
                 <RowDefinition Height="221*"/>
                 <RowDefinition Height="19*"/>
             </Grid.RowDefinitions>
-            <!--<Grid Grid.RowSpan="2" Name="LoginGrid" Visibility="{Binding LoginWindowVisability,Mode=TwoWay}">
+            <Grid Grid.RowSpan="2" Name="LoginGrid" Visibility="{Binding LoginWindowVisability,Mode=TwoWay}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="36*"/>
                     <RowDefinition Height="221*"/>
@@ -254,7 +254,7 @@
                         </Button.Template>
                     </Button>
                 </DockPanel>
-            </Grid>-->
+            </Grid>
             <Grid Grid.RowSpan="2" Name="CreateGrid" Visibility="{Binding CreateGridVisability,Mode=TwoWay}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="123*"/>
@@ -262,12 +262,12 @@
                     <RowDefinition Height="97*"/>
                     <RowDefinition Height="31*"/>
                 </Grid.RowDefinitions>
-                <TextBox Name="RoomNameTextBox" FontSize="30" Margin="10" Text="{Binding CreateRoomNameTextEnter}" TextChanged="TextBox_TextChanged"
+                <TextBox Name="RoomNameTextBox" FontSize="30" Margin="10"  TextChanged="TextBox_TextChanged"
   materialDesign:HintAssist.Hint="Room name"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
   VerticalAlignment="Center" />
                 <DockPanel  Margin="0,50,0,0" Grid.Row="2">
-                    <Button  IsEnabled="False" Opacity="0.5"  Margin="30,0,0,0" DockPanel.Dock="Left" Width="140" FontSize="20" Content="Create Room" Name="CreateButton"  >
+                    <Button  IsEnabled="False" Opacity="0.5"  Margin="30,0,0,0" DockPanel.Dock="Left" Width="140" FontSize="20" Content="Create Room" Name="CreateButton" Command="{Binding CreateNewRoom}"  CommandParameter="{Binding ElementName=RoomNameTextBox}" >
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Grid>

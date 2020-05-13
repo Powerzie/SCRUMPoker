@@ -32,14 +32,25 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
         {
             get { return _listOfChatMembers; }
             set { _listOfChatMembers = value; OnPropertyChanged(nameof(ListOfChatMembers)); }
+        }
 
             #endregion
 
             #endregion
 
             #region COMMANDS&METHODS
-
-            #endregion
+               public ICommand CreateNewRoom
+        {
+            get
+            {
+                return new DelegateClickCommand((roomName) =>
+                {
+                    Service.CreateNewRoom(CurrentLoginedUser.Id, (roomName as TextBox).Text);
+                });
+            }
         }
+        
+            #endregion
     }
+
 }

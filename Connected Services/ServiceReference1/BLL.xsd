@@ -10,4 +10,13 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserDTO" nillable="true" type="tns:UserDTO" />
+  <xs:complexType name="RoomDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="NameOfRoom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OwnerId" type="xs:int" />
+      <xs:element minOccurs="0" name="RoomCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RoomDTO" nillable="true" type="tns:RoomDTO" />
 </xs:schema>

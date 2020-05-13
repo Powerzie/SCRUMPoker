@@ -91,9 +91,11 @@ namespace BLL
         #endregion
 
         #region ROOMS
-        public bool CreateNewRoom(int ownerID,string roomName)
+        public RoomDTO CreateNewRoom(int ownerID,string roomName)
         {
-            return DAL.CreateNewRoom(ownerID, roomName);
+            Room returnedRoom = DAL.CreateNewRoom(ownerID, roomName);
+            return new RoomDTO() { Id = returnedRoom.Id, NameOfRoom = returnedRoom.NameOfRoom, OwnerId = returnedRoom.OwnerId, RoomCode = returnedRoom.RoomCode };
+
         }
         public bool DeleteRoomById(int id)
         {
