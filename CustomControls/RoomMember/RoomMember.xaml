@@ -44,7 +44,7 @@
                     <Label Name="ShortNameLabel" FontSize="45" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Cooper Black"></Label>
                 </Border>
                 <Label Name="FullNameLabel" Grid.Column="2" VerticalAlignment="Center" Margin="10,16,0,7" FontSize="25" FontWeight="Bold" Height="38" Grid.ColumnSpan="2" >Obema</Label>
-                <Border  Name="choisedNumBorder" Grid.Column="3" CornerRadius="0,0,30,0" Background="{DynamicResource PrimaryHueMidBrush}">
+                <Border  Name="choisedNumBorder" Grid.Column="3" CornerRadius="0,0,30,0" Background="#FF607D8B">
 
                     <Label Name="choisedNum" FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"></Label>
                 </Border>

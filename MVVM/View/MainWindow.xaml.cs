@@ -78,5 +78,43 @@ namespace SPWPF.MVVM.VIew
         {
             OpenEmailVerification();
         }
+
+        private void CreateRoom_Click(object sender, RoutedEventArgs e)
+        {
+            CreateJoinGrid.Visibility = Visibility.Collapsed;
+            CreateGrid.Visibility = Visibility.Visible;
+        }
+
+        private void JoinRoom_Click(object sender, RoutedEventArgs e)
+        {
+            CreateJoinGrid.Visibility = Visibility.Collapsed;
+            JoinGrid.Visibility = Visibility.Visible;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void JoinRoom_Click2(object sender, RoutedEventArgs e)
+        {
+            JoinGrid.Visibility = Visibility.Collapsed;
+            CreateGrid.Visibility = Visibility.Collapsed;
+            CreateJoinGrid.Visibility = Visibility.Visible;
+        }
+
+        private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if (RoomNameTextBox.Text.Length == 0)
+            {
+                CreateButton.Opacity = 0.5;
+                CreateButton.IsEnabled = false;
+            }
+            else
+            {
+                CreateButton.Opacity = 1;
+                CreateButton.IsEnabled = true;
+            }
+        }
     }
 }

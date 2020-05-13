@@ -21,23 +21,25 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
     {
         #region PROPERTIES
         #region PRIVATE
-         private ObservableCollection<RoomMember> _listOfChatMembers { get; set; }
+        private ObservableCollection<RoomMember> _listOfChatMembers { get; set; }
 
 
         #endregion
 
         #region PUBLIC 
 
-        public ObservableCollection<RoomMember> ListOfChatMembers { get { return _listOfChatMembers; }
-            set { _listOfChatMembers = value;OnPropertyChanged(nameof(ListOfChatMembers)); }
+        public ObservableCollection<RoomMember> ListOfChatMembers
+        {
+            get { return _listOfChatMembers; }
+            set { _listOfChatMembers = value; OnPropertyChanged(nameof(ListOfChatMembers)); }
 
-        #endregion
+            #endregion
 
-        #endregion
+            #endregion
 
-        #region COMMANDS&METHODS
+            #region COMMANDS&METHODS
 
-        #endregion
+            #endregion
+        }
     }
-
 }

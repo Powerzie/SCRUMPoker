@@ -38,7 +38,11 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
         private Visibility _loginRegisterVisability { get; set; }
         private Visibility _gameWindowVisability { get; set; }
         private Visibility _loginWindowVisability { get; set; }
-        
+        private Visibility _createJoinGridVisability { get; set; }
+        private Visibility _createGridVisability { get; set; }
+        private Visibility _joinGridVisability { get; set; }
+
+
         private WindowStates currentWindowState;
 
         private int _windowWidth { get; set; }
@@ -110,6 +114,21 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
         {
             get { return _loginWindowVisability; }
             set { _loginWindowVisability = value; OnPropertyChanged(nameof(LoginWindowVisability)); }
+        }
+        public Visibility CreateJoinGridVisability
+        {
+            get { return _createJoinGridVisability; }
+            set { _createJoinGridVisability = value; OnPropertyChanged(nameof(CreateJoinGridVisability)); }
+        }
+        public Visibility CreateGridVisability
+        {
+            get { return _createGridVisability; }
+            set { _createGridVisability = value; OnPropertyChanged(nameof(CreateGridVisability)); }
+        }
+        public Visibility JoinGridVisability
+        {
+            get { return _joinGridVisability; }
+            set { _joinGridVisability = value; OnPropertyChanged(nameof(JoinGridVisability)); }
         }
 
         public int WindowHeight { get { return _windowHeight; } set { _windowHeight = value; OnPropertyChanged(nameof(WindowHeight)); } }
@@ -216,6 +235,7 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
             currentWindowState = WindowStates.GameWindow;
             ChangeMainWindowState(currentWindowState);
         }
+        
 
 
 
@@ -310,7 +330,9 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
                     }
                     else
                     {
-                        OpenGameMenu();
+                        LoginWindowVisability = Visibility.Collapsed;
+                        CreateJoinGridVisability = Visibility.Visible;
+                       // OpenGameMenu();
                     }
 
 

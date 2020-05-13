@@ -38,19 +38,20 @@ namespace SPWPF.CustomControls.RoomMember
         }
         public void ShowSelectedNumber()
         {
-
+            choisedNum.Content = selectedNumber;
         }
         public void HideSelectedNumber()
         {
-
+            choisedNum.Content = "?";
+            choisedNumBorder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF607D8B"));
         }
         public void HaveBiggestSelectedNumber()
         {
-
+            choisedNumBorder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF8D0202"));
         }
         public void HaveLowestSelectedNumber()
         {
-
+            choisedNumBorder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1284C5"));
         }
     }
 }

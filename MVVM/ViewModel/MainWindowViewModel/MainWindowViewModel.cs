@@ -80,6 +80,9 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
         {
             LoginRegisterVisability = Visibility.Visible;
             LoginWindowVisability = Visibility.Visible;
+            CreateGridVisability = Visibility.Collapsed;
+            CreateJoinGridVisability = Visibility.Collapsed;
+            JoinGridVisability = Visibility.Collapsed;
             EmailCodeConfirmGrid = Visibility.Collapsed;
             RegisterGridVisability = Visibility.Collapsed;
         }
