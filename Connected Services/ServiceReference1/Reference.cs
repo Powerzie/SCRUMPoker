@@ -9,17 +9,152 @@
 //------------------------------------------------------------------------------
 
 namespace SPWPF.ServiceReference1 {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserDTO", Namespace="http://schemas.datacontract.org/2004/07/BLL")]
+    [System.SerializableAttribute()]
+    public partial class UserDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsUserOnlineField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsUserOnline {
+            get {
+                return this.IsUserOnlineField;
+            }
+            set {
+                if ((this.IsUserOnlineField.Equals(value) != true)) {
+                    this.IsUserOnlineField = value;
+                    this.RaisePropertyChanged("IsUserOnline");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RegisterNewUser", ReplyAction="http://tempuri.org/IService1/RegisterNewUserResponse")]
-        bool RegisterNewUser(string userName, string password);
+        bool RegisterNewUser(string userName, string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RegisterNewUser", ReplyAction="http://tempuri.org/IService1/RegisterNewUserResponse")]
-        System.Threading.Tasks.Task<bool> RegisterNewUserAsync(string userName, string password);
+        System.Threading.Tasks.Task<bool> RegisterNewUserAsync(string userName, string email, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/IsUserExistByLogin", ReplyAction="http://tempuri.org/IService1/IsUserExistByLoginResponse")]
+        bool IsUserExistByLogin(string login);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/IsUserExistByLogin", ReplyAction="http://tempuri.org/IService1/IsUserExistByLoginResponse")]
+        System.Threading.Tasks.Task<bool> IsUserExistByLoginAsync(string login);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/IsUserExistByEmail", ReplyAction="http://tempuri.org/IService1/IsUserExistByEmailResponse")]
+        bool IsUserExistByEmail(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/IsUserExistByEmail", ReplyAction="http://tempuri.org/IService1/IsUserExistByEmailResponse")]
+        System.Threading.Tasks.Task<bool> IsUserExistByEmailAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LoginByEmail", ReplyAction="http://tempuri.org/IService1/LoginByEmailResponse")]
+        SPWPF.ServiceReference1.UserDTO LoginByEmail(string hashedPass, string Email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LoginByEmail", ReplyAction="http://tempuri.org/IService1/LoginByEmailResponse")]
+        System.Threading.Tasks.Task<SPWPF.ServiceReference1.UserDTO> LoginByEmailAsync(string hashedPass, string Email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LoginByLogin", ReplyAction="http://tempuri.org/IService1/LoginByLoginResponse")]
+        SPWPF.ServiceReference1.UserDTO LoginByLogin(string hashedPass, string Login);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LoginByLogin", ReplyAction="http://tempuri.org/IService1/LoginByLoginResponse")]
+        System.Threading.Tasks.Task<SPWPF.ServiceReference1.UserDTO> LoginByLoginAsync(string hashedPass, string Login);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -49,12 +184,44 @@ namespace SPWPF.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public bool RegisterNewUser(string userName, string password) {
-            return base.Channel.RegisterNewUser(userName, password);
+        public bool RegisterNewUser(string userName, string email, string password) {
+            return base.Channel.RegisterNewUser(userName, email, password);
         }
         
-        public System.Threading.Tasks.Task<bool> RegisterNewUserAsync(string userName, string password) {
-            return base.Channel.RegisterNewUserAsync(userName, password);
+        public System.Threading.Tasks.Task<bool> RegisterNewUserAsync(string userName, string email, string password) {
+            return base.Channel.RegisterNewUserAsync(userName, email, password);
+        }
+        
+        public bool IsUserExistByLogin(string login) {
+            return base.Channel.IsUserExistByLogin(login);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsUserExistByLoginAsync(string login) {
+            return base.Channel.IsUserExistByLoginAsync(login);
+        }
+        
+        public bool IsUserExistByEmail(string email) {
+            return base.Channel.IsUserExistByEmail(email);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsUserExistByEmailAsync(string email) {
+            return base.Channel.IsUserExistByEmailAsync(email);
+        }
+        
+        public SPWPF.ServiceReference1.UserDTO LoginByEmail(string hashedPass, string Email) {
+            return base.Channel.LoginByEmail(hashedPass, Email);
+        }
+        
+        public System.Threading.Tasks.Task<SPWPF.ServiceReference1.UserDTO> LoginByEmailAsync(string hashedPass, string Email) {
+            return base.Channel.LoginByEmailAsync(hashedPass, Email);
+        }
+        
+        public SPWPF.ServiceReference1.UserDTO LoginByLogin(string hashedPass, string Login) {
+            return base.Channel.LoginByLogin(hashedPass, Login);
+        }
+        
+        public System.Threading.Tasks.Task<SPWPF.ServiceReference1.UserDTO> LoginByLoginAsync(string hashedPass, string Login) {
+            return base.Channel.LoginByLoginAsync(hashedPass, Login);
         }
     }
 }

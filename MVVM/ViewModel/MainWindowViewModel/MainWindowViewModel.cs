@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SPWPF.ServiceReference1;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,6 +8,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using SPWPF.Hashing;
+
 
 namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
 {
@@ -36,9 +39,18 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
     }
     public partial class MainWindowViewModel : INotifyPropertyChanged
     {
+        
+        private Service1Client Service { get; set; }
+        private Hasher hasher;
         public MainWindowViewModel()
         {
             EmailTextBoxForegroundBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DD000000"));
+            LoginTextBoxForegroundBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DD000000"));
+            OpenLoginAndRegisterMenu();
+            currentWindowState = WindowStates.MainWindow;
+            ChangeMainWindowState(currentWindowState);
+            hasher = new Hasher();
+            Service = new Service1Client();
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string prop)
@@ -49,17 +61,37 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
         #region PROPERTIES
 
         #region PRIVATE
-      
+
         #endregion
 
         #region PUBLIC 
-       
+
         #endregion
 
         #endregion
 
         #region COMMANDS&METHODS
-
+        private void CloseAllWindows()
+        {
+            EmailCodeConfirmGrid = Visibility.Hidden;
+            RegisterGridVisability = Visibility.Hidden;
+        }
+        private void OpenLoginAndRegisterMenu  ()
+        {
+            LoginRegisterVisability = Visibility.Visible;
+            EmailCodeConfirmGrid = Visibility.Hidden;
+            RegisterGridVisability = Visibility.Hidden;
+        }
+        private void OpenRegistrationWindow()
+        {
+            CloseAllWindows();
+            RegisterGridVisability = Visibility.Visible;
+        }
+        private void OpenMailVerificationWindow()
+        {
+            CloseAllWindows();
+            EmailCodeConfirmGrid = Visibility.Visible;
+        }
 
         public ICommand MainWindow_SendMessageButtonClick
         {

@@ -37,6 +37,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EASendMail, Version=7.7.0.1, Culture=neutral, PublicKeyToken=88adb80ecd66540b, processorArchitecture=MSIL">
+      <HintPath>packages\EASendMail.7.7.0.1\lib\net461\EASendMail.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=1.2.5.1420, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\MaterialDesignColors.1.2.5-ci1420\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
@@ -85,7 +88,7 @@
     <Compile Include="CustomControls\WindowControlPanel\WindowControlPanel.xaml.cs">
       <DependentUpon>WindowControlPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Hashing\Class1.cs" />
+    <Compile Include="Hashing\PasswordHasher.cs" />
     <Compile Include="MVVM\Model\Model.cs" />
     <Compile Include="MVVM\ViewModel\LoginAndRegistrationViewModel\MainWindowViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainWindowViewModel\MainWindowViewModel.cs" />
@@ -112,12 +115,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\ServiceReference1\BLL.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceReference1\service.wsdl" />
     <None Include="Connected Services\ServiceReference1\service.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReference1\service1.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference1\SPWPF.ServiceReference1.UserDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

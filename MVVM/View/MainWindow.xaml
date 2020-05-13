@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SPWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="505" Width="365"
+        Title="MainWindow" 
            WindowStyle="None"
+        d:DesignWidth="960"
         AllowsTransparency="True"
-        
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:windowcontrolpanel="clr-namespace:StepChat.StepChatUI.CustomUIElement.WindowControlPanel"
         xmlns:viewmodel="clr-namespace:SPWPF.MVVM.ViewModel.MainWindowViewModel"
@@ -18,7 +18,16 @@
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
      Background="{DynamicResource PrimaryHueLightBrush}"
-     FontFamily="{DynamicResource MaterialDesignFont}" WindowStartupLocation="CenterOwner"  >
+        
+     FontFamily="{DynamicResource MaterialDesignFont}" WindowStartupLocation="CenterOwner"  
+        
+        Width="{Binding WindowWidth}"
+        Height="{Binding WindowHeight}"
+        MinHeight="{Binding MinHeightRange}"
+        MaxHeight="{Binding MaxHeightRange}"
+        MinWidth="{Binding MinWidthRange}"
+        MaxWidth="{Binding MaxWidthRange}"
+        >
 
     <Window.DataContext>
         <viewmodel:MainWindowViewModel/>
@@ -30,40 +39,40 @@
         </Grid.RowDefinitions>
 
         <windowcontrolpanel:WindowControlPanel Margin="0,0,0,1" x:Name="windowControlPanel"></windowcontrolpanel:WindowControlPanel>
-        <!--<Grid Name="spMainWindow"   Background="{DynamicResource MaterialDesignPaper}">
-        </Grid>-->
-
-        <Grid Grid.Row="1" Grid.Column="0"  Name="spLoginRegistrationWindow" Background="#FFD6E0E4" Visibility="Visible" Grid.RowSpan="2">
+      
+        <Grid Grid.Row="1" Name="GameWindow" Visibility="{Binding GameWindowVisability}" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="36*"/>
                 <RowDefinition Height="221*"/>
                 <RowDefinition Height="19*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.RowSpan="2" Name="LoginGrid" Visibility="Collapsed">
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0"  Name="spLoginRegistrationWindow" d:IsHidden="True" Background="#FFD6E0E4" Visibility="{Binding LoginRegisterVisability}" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="36*"/>
+                <RowDefinition Height="221*"/>
+                <RowDefinition Height="19*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.RowSpan="2" Name="LoginGrid" Visibility="Visible">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="36*"/>
                     <RowDefinition Height="221*"/>
                     <RowDefinition Height="19*"/>
                 </Grid.RowDefinitions>
                 <DockPanel   LastChildFill="False"    Grid.Row="1"  >
-                    <TextBox DockPanel.Dock="Top" FontSize="30" Margin="35"
+                    <TextBox DockPanel.Dock="Top" FontSize="30" Margin="35" Text="{Binding LoginWindowLoginEnterText}"
   x:Name="NameTextBox"
   materialDesign:HintAssist.Hint="Login"
 >
-                        <TextBox.Text>
-                            <Binding
-      Path="Name"
-      UpdateSourceTrigger="PropertyChanged">
-                            </Binding>
-                        </TextBox.Text>
                     </TextBox>
-                    <PasswordBox FontSize="30" DockPanel.Dock="Top" Margin="35"
+                    <PasswordBox FontSize="30" DockPanel.Dock="Top" Margin="35" 
   x:Name="PasswordBox"
   materialDesign:HintAssist.Hint="Password"
   materialDesign:TextFieldAssist.HasClearButton="True"
  />
                     <DockPanel DockPanel.Dock="Top">
-                        <Button Margin="30,0,0,0" DockPanel.Dock="Left" Width="140" FontSize="20" Content="Login"   Command="{Binding MainWindowLoginButtonClick}">
+                        <Button Margin="30,0,0,0" DockPanel.Dock="Left" Width="140" FontSize="20" Content="Login"   Command="{Binding MainWindowLoginButtonClick}" CommandParameter="{Binding ElementName=PasswordBox}">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid>
@@ -94,7 +103,7 @@
 
                 <Label Grid.Row="3" HorizontalAlignment="Right" FontSize="12" Opacity="0.5" Width="66">Version 0.1</Label>
             </Grid>
-            <Grid Grid.RowSpan="2" Name="RegisterGrid" Visibility="Visible">
+            <Grid Grid.RowSpan="2" Name="RegisterGrid" Visibility="{Binding Path = RegisterGridVisability,Mode=TwoWay}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="114*"/>
                     <RowDefinition Height="35*"/>
@@ -102,16 +111,10 @@
                 </Grid.RowDefinitions>
                 <DockPanel   LastChildFill="False" Grid.RowSpan="1"  >
 
-                    <TextBox DockPanel.Dock="Top" FontSize="30" Margin="35"
+                    <TextBox DockPanel.Dock="Top" FontSize="30" Margin="35" Text="{Binding LoginEnterText}" Foreground="{Binding LoginTextBoxForegroundBrush}"
   x:Name="RegisterNameTextBox"
   materialDesign:HintAssist.Hint="Login"
 >
-                        <TextBox.Text>
-                            <Binding
-      Path="Name"
-      UpdateSourceTrigger="PropertyChanged">
-                            </Binding>
-                        </TextBox.Text>
                     </TextBox>
                     <TextBox DockPanel.Dock="Top" FontSize="30" Margin="35" Foreground="{Binding  EmailTextBoxForegroundBrush}"  Text="{Binding Path= EmailEnterText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                       x:Name="RegisterEmailTextBox"
@@ -136,7 +139,7 @@
 
                 </DockPanel>
                 <DockPanel  Margin="0,50,0,0" Grid.Row="1">
-                    <Button Opacity="0.5" Name="AcceptButton" IsEnabled="False" Margin="30,0,0,0" DockPanel.Dock="Left" Width="140" FontSize="20" Content="Accept" Command="{Binding RegistrationWindowAcceptButtonClick}" CommandParameter="{Binding ElementName=RegisterPasswordBox1}">
+                    <Button Opacity="0.5" Name="AcceptButton" IsEnabled="False" Margin="30,0,0,0" DockPanel.Dock="Left" Width="140" FontSize="20" Content="Accept" Command="{Binding RegistrationWindowAcceptButtonClick}" CommandParameter="{Binding ElementName=RegisterPasswordBox1}" >
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Grid>
@@ -162,16 +165,21 @@
                         </Button.Template>
                     </Button>
                 </DockPanel>
-           
+
             </Grid>
-            <Grid Grid.RowSpan="2" Name="EmailCodeConfirmGrid" Visibility="Collapsed">
+            <Grid Grid.RowSpan="2" Name="EmailCodeConfirmGrid" Visibility="{Binding EmailCodeConfirmGrid,Mode=TwoWay}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="114*"/>
-                    <RowDefinition Height="35*"/>
-                    <RowDefinition Height="11*"/>
+                    <RowDefinition Height="123*"/>
+                    <RowDefinition Height="195*"/>
+                    <RowDefinition Height="97*"/>
+                    <RowDefinition Height="31*"/>
                 </Grid.RowDefinitions>
-                <DockPanel  Margin="0,50,0,0" Grid.Row="1">
-                    <Button Opacity="0.5" Name="Confirm"  Margin="30,0,0,0" DockPanel.Dock="Left" Width="140" FontSize="20" Content="Accept" Command="{Binding ConfirmEmailCode}" >
+                <TextBox FontSize="30" Margin="35" Text="{Binding VerificationCodeTextBox}"
+  x:Name="EmailCodeVertificationTextBox"
+  materialDesign:HintAssist.Hint="Code" >
+                </TextBox>
+                <DockPanel  Margin="0,50,0,0" Grid.Row="2">
+                    <Button  Name="Confirm"   Margin="30,0,0,0" DockPanel.Dock="Left" Width="140" FontSize="20" Content="Confirm" Command="{Binding ConfirmEmailCode}" >
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Grid>
@@ -200,6 +208,7 @@
             </Grid>
             <Label  Name="ExceptionHint"  Foreground="#DDD80000" FontSize="20" Grid.Row="2" Content="{Binding ExceptionHelperText,Mode=TwoWay}" HorizontalAlignment="Center"></Label>
         </Grid>
+
 
     </Grid>
 

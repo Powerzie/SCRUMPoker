@@ -40,7 +40,51 @@ namespace BLL
                     Id = returnedUser.Id,
                     UserName = returnedUser.UserName,
                     IsUserOnline = returnedUser.IsUserOnline,
-                    Password = returnedUser.Password
+                    Password = returnedUser.Password,
+                    Email = returnedUser.EmailUser
+                };
+            }
+        }
+        public bool IsUserExistByLogin(string login)
+        {
+            return DAL.IsUserExistByLogin(login);
+        }
+        public bool IsUserExistByEmail(string email)
+        {
+            return DAL.IsUserExistByEmail(email);
+        }
+        public UserDTO LoginByEmail(string hashedPass, string Email)
+        {
+
+            User returnedUser = DAL.LoginByEmail(hashedPass,Email);
+            if (returnedUser == null)
+                return null;
+            else
+            {
+                return new UserDTO()
+                {
+                    Id = returnedUser.Id,
+                    UserName = returnedUser.UserName,
+                    IsUserOnline = returnedUser.IsUserOnline,
+                    Password = returnedUser.Password,
+                    Email = returnedUser.EmailUser
+                };
+            }
+        }
+        public UserDTO LoginByLogin(string hashedPass, string Login)
+        {
+            User returnedUser = DAL.LoginByLogin(hashedPass,Login);
+            if (returnedUser == null)
+                return null;
+            else
+            {
+                return new UserDTO()
+                {
+                    Id = returnedUser.Id,
+                    UserName = returnedUser.UserName,
+                    IsUserOnline = returnedUser.IsUserOnline,
+                    Password = returnedUser.Password,
+                    Email = returnedUser.EmailUser
                 };
             }
         }

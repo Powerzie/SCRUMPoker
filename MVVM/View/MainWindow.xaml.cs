@@ -6,17 +6,7 @@ namespace SPWPF.MVVM.VIew
     {
         private ServiceReference1.Service1Client Service;
 
-       
-
-        private enum WindowStates {MainWindow,GameWindow }
-
-        private WindowStates currentWindowState;
-
-        private int minHeightRange;
-        private int maxHeightRange;
-
-        private int minWidthRange;
-        private int maxWidthRange;
+     
 
         public MainWindow()
         {
@@ -26,56 +16,37 @@ namespace SPWPF.MVVM.VIew
             windowControlPanel.ButtonClose_MouseClick_Handler += ((obj , obj2) => { this.Close(); });
             windowControlPanel.ButtonMinimize_MouseClick_Handler += ((obj, obj2) => { this.WindowState = WindowState.Minimized; });
 
-            currentWindowState = WindowStates.MainWindow;
+          
 
-            minHeightRange = 30;
-            maxHeightRange = 30;
+         
 
-            minWidthRange = 30;
-            maxWidthRange = 30;
-
-
-        }
-        private void ChangeMainWindowState(WindowStates state)
-        {
-            currentWindowState = state;
-            switch (currentWindowState)
-            {
-                case WindowStates.MainWindow:
-
-                    Window.Height = 505;
-                    Window.MaxHeight = Window.Height + minHeightRange;
-                    Window.MinHeight = Window.Height - maxHeightRange;
-
-                    Window.Width = 365;
-                    Window.MaxWidth = Window.Height + minWidthRange;
-                    Window.MinWidth = Window.Height - maxWidthRange;
-
-
-                    break;
-                case WindowStates.GameWindow:
-
-
-                    break;
-                default:
-                    break;
-            }
         }
         private void OpenRegistrationMenu()
         {
             RegisterGrid.Visibility = Visibility.Visible;
             LoginGrid.Visibility = Visibility.Collapsed;
+            EmailCodeConfirmGrid.Visibility = Visibility.Collapsed;
         }
         private void OpenLoginMenu()
         {
             LoginGrid.Visibility = Visibility.Visible;
             RegisterGrid.Visibility = Visibility.Collapsed;
+
         }
         private void OpenMainWindowMenu()
             {
             spLoginRegistrationWindow.Visibility = Visibility.Visible;
             RegisterGrid.Visibility = Visibility.Collapsed;
             LoginGrid.Visibility = Visibility.Visible;
+           }
+        private void OpenEmailVerification()
+        {
+            EmailCodeConfirmGrid.Visibility = Visibility.Visible;
+            RegisterGrid.Visibility = Visibility.Collapsed;
+        }
+        private void OpenGameMenu()
+        {
+            
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -101,6 +72,11 @@ namespace SPWPF.MVVM.VIew
                 AcceptButton.IsEnabled = true;
                   
             }
+        }
+
+        private void AcceptButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenEmailVerification();
         }
     }
 }
