@@ -119,7 +119,7 @@ namespace BLL
                 return null;
             else
                 return new UserDTO()
-                { Id = returnedUser.Id, IsUserOnline = returnedUser.IsUserOnline, Password = returnedUser.Password, UserName = returnedUser.Password };
+                { Id = returnedUser.Id, IsUserOnline = returnedUser.IsUserOnline, Password = returnedUser.Password, UserName = returnedUser.UserName };
         }
         public RoomDTO GetRoomByCode(int code)
         {
@@ -139,7 +139,21 @@ namespace BLL
                 return new RoomDTO()
                 { Id = returnedRoom.Id, NameOfRoom = returnedRoom.NameOfRoom, OwnerId = returnedRoom.OwnerId, RoomCode = returnedRoom.RoomCode };
         }
+        public List<UserDTO> GetChatMembersInRoom(int roomCode)
+        {
+            List<User> res = DAL.GetChatMembersInRoom(roomCode);
+            if (res == null)
+                return null;
+            List<UserDTO> listToReturn = new List<UserDTO>();
+            foreach (var it in res)
+            {
+                listToReturn.Add(new UserDTO()
+                { Id = it.Id, IsUserOnline = it.IsUserOnline, Password = it.Password, UserName = it.UserName });
+            }
+            return listToReturn;
 
-            #endregion
         }
+
+        #endregion
+    }
 }

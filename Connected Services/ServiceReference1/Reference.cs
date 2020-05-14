@@ -15,6 +15,99 @@ namespace SPWPF.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RoomDTO", Namespace="http://schemas.datacontract.org/2004/07/BLL")]
+    [System.SerializableAttribute()]
+    public partial class RoomDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameOfRoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OwnerIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RoomCodeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NameOfRoom {
+            get {
+                return this.NameOfRoomField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameOfRoomField, value) != true)) {
+                    this.NameOfRoomField = value;
+                    this.RaisePropertyChanged("NameOfRoom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OwnerId {
+            get {
+                return this.OwnerIdField;
+            }
+            set {
+                if ((this.OwnerIdField.Equals(value) != true)) {
+                    this.OwnerIdField = value;
+                    this.RaisePropertyChanged("OwnerId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int RoomCode {
+            get {
+                return this.RoomCodeField;
+            }
+            set {
+                if ((this.RoomCodeField.Equals(value) != true)) {
+                    this.RoomCodeField = value;
+                    this.RaisePropertyChanged("RoomCode");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="UserDTO", Namespace="http://schemas.datacontract.org/2004/07/BLL")]
     [System.SerializableAttribute()]
     public partial class UserDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -122,99 +215,6 @@ namespace SPWPF.ServiceReference1 {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RoomDTO", Namespace="http://schemas.datacontract.org/2004/07/BLL")]
-    [System.SerializableAttribute()]
-    public partial class RoomDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameOfRoomField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int OwnerIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int RoomCodeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string NameOfRoom {
-            get {
-                return this.NameOfRoomField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameOfRoomField, value) != true)) {
-                    this.NameOfRoomField = value;
-                    this.RaisePropertyChanged("NameOfRoom");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int OwnerId {
-            get {
-                return this.OwnerIdField;
-            }
-            set {
-                if ((this.OwnerIdField.Equals(value) != true)) {
-                    this.OwnerIdField = value;
-                    this.RaisePropertyChanged("OwnerId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int RoomCode {
-            get {
-                return this.RoomCodeField;
-            }
-            set {
-                if ((this.RoomCodeField.Equals(value) != true)) {
-                    this.RoomCodeField = value;
-                    this.RaisePropertyChanged("RoomCode");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
@@ -237,6 +237,12 @@ namespace SPWPF.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/IsUserExistByEmail", ReplyAction="http://tempuri.org/IService1/IsUserExistByEmailResponse")]
         System.Threading.Tasks.Task<bool> IsUserExistByEmailAsync(string email);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/JoinRoom", ReplyAction="http://tempuri.org/IService1/JoinRoomResponse")]
+        SPWPF.ServiceReference1.RoomDTO JoinRoom(int userId, int roomCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/JoinRoom", ReplyAction="http://tempuri.org/IService1/JoinRoomResponse")]
+        System.Threading.Tasks.Task<SPWPF.ServiceReference1.RoomDTO> JoinRoomAsync(int userId, int roomCode);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LoginByEmail", ReplyAction="http://tempuri.org/IService1/LoginByEmailResponse")]
         SPWPF.ServiceReference1.UserDTO LoginByEmail(string hashedPass, string Email);
         
@@ -254,6 +260,18 @@ namespace SPWPF.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateNewRoom", ReplyAction="http://tempuri.org/IService1/CreateNewRoomResponse")]
         System.Threading.Tasks.Task<SPWPF.ServiceReference1.RoomDTO> CreateNewRoomAsync(int ownerId, string roomName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetChatMembersInRoom", ReplyAction="http://tempuri.org/IService1/GetChatMembersInRoomResponse")]
+        SPWPF.ServiceReference1.UserDTO[] GetChatMembersInRoom(int roomCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetChatMembersInRoom", ReplyAction="http://tempuri.org/IService1/GetChatMembersInRoomResponse")]
+        System.Threading.Tasks.Task<SPWPF.ServiceReference1.UserDTO[]> GetChatMembersInRoomAsync(int roomCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetRoomOwner", ReplyAction="http://tempuri.org/IService1/GetRoomOwnerResponse")]
+        SPWPF.ServiceReference1.UserDTO GetRoomOwner(int roomCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetRoomOwner", ReplyAction="http://tempuri.org/IService1/GetRoomOwnerResponse")]
+        System.Threading.Tasks.Task<SPWPF.ServiceReference1.UserDTO> GetRoomOwnerAsync(int roomCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -307,6 +325,14 @@ namespace SPWPF.ServiceReference1 {
             return base.Channel.IsUserExistByEmailAsync(email);
         }
         
+        public SPWPF.ServiceReference1.RoomDTO JoinRoom(int userId, int roomCode) {
+            return base.Channel.JoinRoom(userId, roomCode);
+        }
+        
+        public System.Threading.Tasks.Task<SPWPF.ServiceReference1.RoomDTO> JoinRoomAsync(int userId, int roomCode) {
+            return base.Channel.JoinRoomAsync(userId, roomCode);
+        }
+        
         public SPWPF.ServiceReference1.UserDTO LoginByEmail(string hashedPass, string Email) {
             return base.Channel.LoginByEmail(hashedPass, Email);
         }
@@ -329,6 +355,22 @@ namespace SPWPF.ServiceReference1 {
         
         public System.Threading.Tasks.Task<SPWPF.ServiceReference1.RoomDTO> CreateNewRoomAsync(int ownerId, string roomName) {
             return base.Channel.CreateNewRoomAsync(ownerId, roomName);
+        }
+        
+        public SPWPF.ServiceReference1.UserDTO[] GetChatMembersInRoom(int roomCode) {
+            return base.Channel.GetChatMembersInRoom(roomCode);
+        }
+        
+        public System.Threading.Tasks.Task<SPWPF.ServiceReference1.UserDTO[]> GetChatMembersInRoomAsync(int roomCode) {
+            return base.Channel.GetChatMembersInRoomAsync(roomCode);
+        }
+        
+        public SPWPF.ServiceReference1.UserDTO GetRoomOwner(int roomCode) {
+            return base.Channel.GetRoomOwner(roomCode);
+        }
+        
+        public System.Threading.Tasks.Task<SPWPF.ServiceReference1.UserDTO> GetRoomOwnerAsync(int roomCode) {
+            return base.Channel.GetRoomOwnerAsync(roomCode);
         }
     }
 }

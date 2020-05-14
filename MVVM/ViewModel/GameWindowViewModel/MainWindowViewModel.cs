@@ -39,17 +39,46 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
             #endregion
 
             #region COMMANDS&METHODS
-               public ICommand CreateNewRoom
+       
+        public void LoadRoomMembers()
+        {
+            ListOfChatMembers.Add(new RoomMember(Service.GetRoomOwner(CurrentJoinedRoom.RoomCode), true));
+            foreach (var it in Service.GetChatMembersInRoom(CurrentJoinedRoom.RoomCode))
+            {
+                if(it.UserName!=CurrentLoginedUser.UserName)
+                ListOfChatMembers.Add(new RoomMember(it, false));
+            }
+
+        }
+        public ICommand JoinButtonClick
         {
             get
             {
-                return new DelegateClickCommand((roomName) =>
+                return new DelegateClickCommand((obj) =>
                 {
-                    Service.CreateNewRoom(CurrentLoginedUser.Id, (roomName as TextBox).Text);
+                   CurrentJoinedRoom= Service.JoinRoom(CurrentLoginedUser.Id,int.Parse(JoinWindowEnteredCode));
+                    LoadRoomMembers();
+                    CodeHintText = CurrentJoinedRoom.RoomCode.ToString();
                     OpenGameMenu();
+
                 });
             }
         }
+
+        public ICommand CreateNewRoom
+                {
+                     get
+                     {
+                        return new DelegateClickCommand((roomName) =>
+                        {
+                            CurrentJoinedRoom= Service.CreateNewRoom(CurrentLoginedUser.Id, (roomName as TextBox).Text);
+                            Service.JoinRoom(CurrentLoginedUser.Id, CurrentJoinedRoom.RoomCode);
+                            LoadRoomMembers();
+                            CodeHintText = CurrentJoinedRoom.RoomCode.ToString();
+                            OpenGameMenu();
+                        });
+                     }
+                }
         
             #endregion
     }

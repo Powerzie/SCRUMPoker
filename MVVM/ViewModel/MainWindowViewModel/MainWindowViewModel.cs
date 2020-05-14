@@ -9,7 +9,8 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using SPWPF.Hashing;
-
+using System.Collections.ObjectModel;
+using SPWPF.CustomControls.RoomMember;
 
 namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
 {
@@ -46,6 +47,7 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
         {
             EmailTextBoxForegroundBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DD000000"));
             LoginTextBoxForegroundBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DD000000"));
+            ListOfChatMembers = new ObservableCollection<RoomMember>();
             OpenLoginAndRegisterMenu();
             currentWindowState = WindowStates.MainWindow;
             ChangeMainWindowState(currentWindowState);

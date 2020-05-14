@@ -41,15 +41,18 @@
         </Grid.RowDefinitions>
         <windowcontrolpanel:WindowControlPanel  x:Name="windowControlPanel"></windowcontrolpanel:WindowControlPanel>
 
-        <Grid Grid.Row="1" Name="GameWindow" d:IsHidden="True" Visibility="{Binding GameWindowVisability}" Grid.RowSpan="2">
+        <Grid Grid.Row="1" Name="GameWindow"   Visibility="{Binding GameWindowVisability}" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="259*"/>
+                <ColumnDefinition Width="931*"/>
+                <ColumnDefinition Width="310*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="464*"/>
+                <RowDefinition Height="45*"/>
             </Grid.RowDefinitions>
-            <Border Grid.Row="0"  HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,-1,0,0"  Background="Gray">
-                <ItemsControl  Style="{x:Null}" Focusable="False" Margin="0,-2,1,0" ItemsSource="{Binding ListOfChatMembers}">
+            <Border Grid.Row="0"  HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,-1,0,0"  Background="Gray" Grid.RowSpan="2" Width="251">
+                <ItemsControl  Style="{x:Null}" Focusable="False" Margin="0,-2,1,0"  ItemsSource="{Binding ListOfChatMembers}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <roommember:RoomMember Margin="0,0,0,5" ></roommember:RoomMember>
@@ -60,9 +63,31 @@
                 </ItemsControl>
 
             </Border>
+            <DockPanel Margin="0,-1,0,0" Grid.Column="2" Grid.RowSpan="2" Background="{DynamicResource PrimaryHueDarkBrush}">
+                <Border Margin="10" Background="{DynamicResource PrimaryHueLightBrush}" DockPanel.Dock="Bottom" CornerRadius="10">
+                    <TextBox Padding="3"
+    TextWrapping="Wrap"
+    VerticalAlignment="Stretch"
+    MinWidth="280"
+    AcceptsReturn="True"
+    VerticalScrollBarVisibility="Auto"
+    SpellCheck.IsEnabled="True"
+    materialDesign:HintAssist.Hint="Multiline text"
+    Height="80">
+                    </TextBox>
+
+                </Border>
+                <Border Margin="10" Background="{DynamicResource PrimaryHueLightBrush}" DockPanel.Dock="Bottom" CornerRadius="10">
+                    <ItemsControl  ></ItemsControl>
+                </Border>
+            </DockPanel>
+            <DockPanel Grid.Row="1" Grid.Column="1" Background="{DynamicResource PrimaryHueDarkBrush}" LastChildFill="False">
+                <Label FontSize="30" DockPanel.Dock="Right" Content="{Binding CodeHintText}"></Label>
+            </DockPanel>
+
         </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="0"  Name="spLoginRegistrationWindow"  Background="#FFD6E0E4" Visibility="{Binding LoginRegisterVisability}" Grid.RowSpan="2">
+        <Grid Grid.Row="1" Grid.Column="0" d:IsHidden="True"  Name="spLoginRegistrationWindow"  Background="#FFD6E0E4" Visibility="{Binding LoginRegisterVisability}" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="36*"/>
                 <RowDefinition Height="221*"/>
@@ -300,8 +325,12 @@
                     <RowDefinition Height="97*"/>
                     <RowDefinition Height="31*"/>
                 </Grid.RowDefinitions>
+                <TextBox Name="RoomTextBox" FontSize="30" Margin="10"  TextChanged="RoomNameTextBox_TextChanged" Text="{Binding JoinWindowEnteredCode}"
+  materialDesign:HintAssist.Hint="Room code"
+  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+  VerticalAlignment="Center" />
                 <DockPanel  Margin="0,50,0,0" Grid.Row="2">
-                    <Button     Margin="30,0,0,0" DockPanel.Dock="Left" Width="140" FontSize="20" Content="Create"  Click="JoinRoom_Click" >
+                    <Button Name="JoinButton" IsEnabled="False" Opacity="0.5"   Margin="30,0,0,0" DockPanel.Dock="Left" Width="140" FontSize="20" Content="Join"  Command="{Binding JoinButtonClick}" >
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Grid>

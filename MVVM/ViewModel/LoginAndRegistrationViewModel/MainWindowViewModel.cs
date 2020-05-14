@@ -18,6 +18,7 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
     public partial class MainWindowViewModel
     {
         private UserDTO CurrentLoginedUser;
+        private RoomDTO CurrentJoinedRoom;
         private enum WindowStates { MainWindow, GameWindow }
 
         #region PROPERTIES
@@ -53,6 +54,10 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
 
         private int _minWidthRange { get; set; }
         private int _maxWidthRange { get; set; }
+        private string _joinWindowEnteredCode { get; set; }
+
+        private string _codeHintText { get; set; }
+
 
 
         #endregion
@@ -138,6 +143,13 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
         public int MaxHeightRange { get { return _maxHeightRange; } set { _maxHeightRange = value; OnPropertyChanged(nameof(MaxHeightRange)); } }
         public int MinWidthRange { get { return _minWidthRange; } set { _minWidthRange = value; OnPropertyChanged(nameof(MinWidthRange)); } }
         public int MaxWidthRange { get { return _maxWidthRange; } set { _maxWidthRange = value; OnPropertyChanged(nameof(MaxWidthRange)); } }
+        public string JoinWindowEnteredCode { get { return _joinWindowEnteredCode; } set { _joinWindowEnteredCode = value; OnPropertyChanged(nameof(JoinWindowEnteredCode)); } }
+
+        
+
+        public string CodeHintText { get { return _codeHintText; } set { _codeHintText = value; OnPropertyChanged(nameof(CodeHintText)); } }
+        
+    
 
 
 
@@ -247,13 +259,13 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
             {
                 return new DelegateClickCommand((obj) =>
                 {
-                    if (hasher.GetHashedString(VerificationCodeTextBox) == verCode)
-                    {
+                    //if (hasher.GetHashedString(VerificationCodeTextBox) == verCode)
+                    //{
                        if( Service.RegisterNewUser(LoginEnterText, EmailEnterText, passwordHash))
                         {
                             OpenLoginAndRegisterMenu();
                         }
-                    }
+                   // }
                     else
                     {
                         ExceptionHelperText = "Invalid code";

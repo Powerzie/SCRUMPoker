@@ -116,5 +116,19 @@ namespace SPWPF.MVVM.VIew
                 CreateButton.IsEnabled = true;
             }
         }
+
+        private void RoomNameTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if (RoomTextBox.Text.Length == 0)
+            {
+                JoinButton.Opacity = 0.5;
+                JoinButton.IsEnabled = false;
+            }
+            else
+            {
+                JoinButton.Opacity = 1;
+                JoinButton.IsEnabled = true;
+            }
+        }
     }
 }

@@ -45,6 +45,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="JoinRoom">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+        <xs:element minOccurs="0" name="roomCode" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JoinRoomResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BLL" minOccurs="0" name="JoinRoomResult" nillable="true" type="q1:RoomDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="LoginByEmail">
     <xs:complexType>
       <xs:sequence>
@@ -56,7 +71,7 @@
   <xs:element name="LoginByEmailResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BLL" minOccurs="0" name="LoginByEmailResult" nillable="true" type="q1:UserDTO" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BLL" minOccurs="0" name="LoginByEmailResult" nillable="true" type="q2:UserDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -71,7 +86,7 @@
   <xs:element name="LoginByLoginResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BLL" minOccurs="0" name="LoginByLoginResult" nillable="true" type="q2:UserDTO" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/BLL" minOccurs="0" name="LoginByLoginResult" nillable="true" type="q3:UserDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -86,7 +101,35 @@
   <xs:element name="CreateNewRoomResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/BLL" minOccurs="0" name="CreateNewRoomResult" nillable="true" type="q3:RoomDTO" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/BLL" minOccurs="0" name="CreateNewRoomResult" nillable="true" type="q4:RoomDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetChatMembersInRoom">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="roomCode" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetChatMembersInRoomResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/BLL" minOccurs="0" name="GetChatMembersInRoomResult" nillable="true" type="q5:ArrayOfUserDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRoomOwner">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="roomCode" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRoomOwnerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/BLL" minOccurs="0" name="GetRoomOwnerResult" nillable="true" type="q6:UserDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
