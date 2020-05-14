@@ -13,6 +13,7 @@ namespace BLL
         public string Email { get; set; }
         public bool IsUserOnline { get; set; }
         public int? RoomId { get; set; }
+        public int? SelectedNumber { get; set; }
         public string Password { get; set; }
    
     }

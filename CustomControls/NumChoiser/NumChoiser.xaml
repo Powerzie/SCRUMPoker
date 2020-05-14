@@ -19,6 +19,6 @@
      FontFamily="{DynamicResource MaterialDesignFont}" Height="100" Width="100"  
              >
     <Border CornerRadius="5" Background="{DynamicResource PrimaryHueMidBrush}">
-        <Button Name="NumText" Margin="15" FontSize="45" FontWeight="Bold" FontFamily="Bernard MT Condensed" Background="{DynamicResource PrimaryHueDarkBrush}" Height="Auto" ></Button>
+        <Button Command="{Binding SelectNumberClick}" Name="NumText"  Margin="15" FontSize="45" FontWeight="Bold" FontFamily="Bernard MT Condensed" Background="{DynamicResource PrimaryHueDarkBrush}" CommandParameter="{Binding ElementName=NumText}" Height="Auto" ></Button>
     </Border>
 </UserControl>

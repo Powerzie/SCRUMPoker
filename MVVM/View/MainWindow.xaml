@@ -54,15 +54,16 @@
                 <RowDefinition Height="45*"/>
             </Grid.RowDefinitions>
             <Border Grid.Row="0"  HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,-1,0,0"  Background="Gray" Grid.RowSpan="2" Width="251">
-                <ItemsControl  Style="{x:Null}" Focusable="False" Margin="0,-2,1,0"  ItemsSource="{Binding ListOfChatMembers}">
+                <ScrollViewer>
+                <ItemsControl  Style="{x:Null}" Focusable="False" Margin="0,-2,1,0" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden"  ItemsSource="{Binding ListOfChatMembers}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <roommember:RoomMember Margin="0,0,0,5" ></roommember:RoomMember>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-
-
+                  
                 </ItemsControl>
+                </ScrollViewer>
 
             </Border>
             <DockPanel Margin="0,-1,0,0" Grid.Column="2" Grid.RowSpan="2" Background="{DynamicResource PrimaryHueDarkBrush}">
@@ -88,7 +89,7 @@
                 <Label FontSize="30" DockPanel.Dock="Right" Content="{Binding CodeHintText}"></Label>
             </DockPanel>
             <StackPanel Grid.Column="1" VerticalAlignment="Top" Orientation="Horizontal" Height="120" >
-                <numchoiser:NumChoiser VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10"  NumberToSelect="1"></numchoiser:NumChoiser>
+                <numchoiser:NumChoiser  VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="10"  NumberToSelect="1"></numchoiser:NumChoiser>
                 <numchoiser:NumChoiser VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10"  NumberToSelect="2"></numchoiser:NumChoiser>
                 <numchoiser:NumChoiser VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10"  NumberToSelect="3"></numchoiser:NumChoiser>
                 <numchoiser:NumChoiser VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10"  NumberToSelect="5"></numchoiser:NumChoiser>

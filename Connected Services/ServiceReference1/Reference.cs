@@ -131,6 +131,9 @@ namespace SPWPF.ServiceReference1 {
         private System.Nullable<int> RoomIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> SelectedNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserNameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -204,6 +207,19 @@ namespace SPWPF.ServiceReference1 {
                 if ((this.RoomIdField.Equals(value) != true)) {
                     this.RoomIdField = value;
                     this.RaisePropertyChanged("RoomId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> SelectedNumber {
+            get {
+                return this.SelectedNumberField;
+            }
+            set {
+                if ((this.SelectedNumberField.Equals(value) != true)) {
+                    this.SelectedNumberField = value;
+                    this.RaisePropertyChanged("SelectedNumber");
                 }
             }
         }
@@ -294,6 +310,18 @@ namespace SPWPF.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SendMessage", ReplyAction="http://tempuri.org/IService1/SendMessageResponse")]
         System.Threading.Tasks.Task SendMessageAsync(int roomCode, string message, int fromUserId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSelectedNumberByUserId", ReplyAction="http://tempuri.org/IService1/GetSelectedNumberByUserIdResponse")]
+        System.Nullable<int> GetSelectedNumberByUserId(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSelectedNumberByUserId", ReplyAction="http://tempuri.org/IService1/GetSelectedNumberByUserIdResponse")]
+        System.Threading.Tasks.Task<System.Nullable<int>> GetSelectedNumberByUserIdAsync(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetSelectedNumberByUserId", ReplyAction="http://tempuri.org/IService1/SetSelectedNumberByUserIdResponse")]
+        bool SetSelectedNumberByUserId(int userId, int number);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetSelectedNumberByUserId", ReplyAction="http://tempuri.org/IService1/SetSelectedNumberByUserIdResponse")]
+        System.Threading.Tasks.Task<bool> SetSelectedNumberByUserIdAsync(int userId, int number);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -304,6 +332,9 @@ namespace SPWPF.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateChatMessages", ReplyAction="http://tempuri.org/IService1/UpdateChatMessagesResponse")]
         void UpdateChatMessages(string message, string from);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateSelectNumbers", ReplyAction="http://tempuri.org/IService1/UpdateSelectNumbersResponse")]
+        void UpdateSelectNumbers(int userId, int number);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -412,6 +443,22 @@ namespace SPWPF.ServiceReference1 {
         
         public System.Threading.Tasks.Task SendMessageAsync(int roomCode, string message, int fromUserId) {
             return base.Channel.SendMessageAsync(roomCode, message, fromUserId);
+        }
+        
+        public System.Nullable<int> GetSelectedNumberByUserId(int userId) {
+            return base.Channel.GetSelectedNumberByUserId(userId);
+        }
+        
+        public System.Threading.Tasks.Task<System.Nullable<int>> GetSelectedNumberByUserIdAsync(int userId) {
+            return base.Channel.GetSelectedNumberByUserIdAsync(userId);
+        }
+        
+        public bool SetSelectedNumberByUserId(int userId, int number) {
+            return base.Channel.SetSelectedNumberByUserId(userId, number);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SetSelectedNumberByUserIdAsync(int userId, int number) {
+            return base.Channel.SetSelectedNumberByUserIdAsync(userId, number);
         }
     }
 }

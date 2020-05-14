@@ -21,11 +21,13 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
 {
     public delegate void VoidDelegate();
     public delegate void MessageDelegate(string message, string from);
+    public delegate void SelectedNumberDelegate(int userId, int number);
     class CallbackHandler : IService1Callback
     {
   
         static public event VoidDelegate UpdateChatMembers;
         static public event MessageDelegate ReciveMessage;
+        static public SelectedNumberDelegate UpdateSelectedNumbers;
         public void UpdateChatMessages(string message, string from)
         {
             ReciveMessage(message, from);
@@ -36,7 +38,10 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
             UpdateChatMembers();
         }
 
-   
+        public void UpdateSelectNumbers(int userId, int number)
+        {
+            UpdateSelectedNumbers(userId, number);
+        }
     }
     public partial class MainWindowViewModel
     {
@@ -81,6 +86,14 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
                 }
             }));
         }
+        private void UpdateSelectednumbers(int userId, int number)
+        {
+            foreach(var it in ListOfChatMembers)
+            {
+                if(it.id)
+                it.choisedNum = number;
+            }
+        }
         public ICommand JoinButtonClick
         {
             get
@@ -112,7 +125,18 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
                 });
             }
         }
-
+        public ICommand SelectNumberClick
+        {
+            get
+            {
+                return new DelegateClickCommand((num) =>
+                {
+                    Task.Run(new Action(() => {
+                        Service.SetSelectedNumberByUserId(CurrentLoginedUser.Id,int.Parse( (num as Button).Content.ToString()));
+                    }));
+                });
+            }
+        }
         public ICommand CreateNewRoom
                 {
                      get

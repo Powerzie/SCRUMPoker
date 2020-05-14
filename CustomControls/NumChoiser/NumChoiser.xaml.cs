@@ -31,5 +31,10 @@ namespace SPWPF.CustomControls.NumChoiser
         {
             InitializeComponent();
         }
+
+        private void NumText_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

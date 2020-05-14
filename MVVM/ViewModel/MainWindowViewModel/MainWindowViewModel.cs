@@ -61,6 +61,7 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
             Service = new Service1Client(instance);
             CallbackHandler.UpdateChatMembers += LoadRoomMembers;
             CallbackHandler.ReciveMessage += ReciveMessage;
+            CallbackHandler.UpdateSelectedNumbers += UpdateSelectednumbers;
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string prop)
@@ -81,6 +82,7 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
         #endregion
 
         #region COMMANDS&METHODS
+     
         private void CloseAllWindows()
         {
             EmailCodeConfirmGrid = Visibility.Hidden;

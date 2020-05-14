@@ -92,6 +92,15 @@ namespace BLL
                 };
             }
         }
+        public int? GetSelectedNumberByUserId(int userId)
+        {
+            return DAL.GetSelectedNumberByUserId(userId);
+        }
+        public bool SetSelectedNumberByUserId(int userId, int number)
+        {
+            return DAL.SetSelectedNumberByUserId(userId, number);
+
+        }
         #endregion
 
         #region ROOMS

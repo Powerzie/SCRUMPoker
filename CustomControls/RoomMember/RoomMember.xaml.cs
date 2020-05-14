@@ -19,13 +19,17 @@ namespace SPWPF.CustomControls.RoomMember
     public partial class RoomMember : UserControl
     {
         private int selectedNumber;
+        private int _userId { get; set; }
+        public int UserId { get { return _userId; } }
         public RoomMember()
         {
             InitializeComponent();
         }
+
         public RoomMember(UserDTO user,bool isRoomOwner=false)
         {
             InitializeComponent();
+            _userId = user.Id;
             FullNameLabel.Content = user.UserName;
             ShortNameLabel.Content = user.UserName[0];
             if(isRoomOwner) CrownImage.Visibility = Visibility.Visible;
