@@ -6,11 +6,13 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
 {
@@ -30,6 +32,8 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
         private string _verificationCodeTextBox { get; set; }
         private string verCode { get; set; }
         private string passwordHash { get; set; }
+        private string _joinWindowEnteredCode { get; set; }
+        private string _codeHintText { get; set; }
 
         private SolidColorBrush _emailTextBoxForegroundBrush { get; set; }
         private SolidColorBrush _loginTextBoxForegroundBrush { get; set; }
@@ -43,23 +47,17 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
         private Visibility _createGridVisability { get; set; }
         private Visibility _joinGridVisability { get; set; }
 
-
         private WindowStates currentWindowState;
 
         private int _windowWidth { get; set; }
         private int _windowHeight { get; set; }
-
         private int _minHeightRange { get; set; }
         private int _maxHeightRange { get; set; }
-
         private int _minWidthRange { get; set; }
         private int _maxWidthRange { get; set; }
-        private string _joinWindowEnteredCode { get; set; }
 
-        private string _codeHintText { get; set; }
-
-
-
+        private bool _isProgressRunning { get; set; }
+      private bool _isMainWindowEnabled { get; set; }
         #endregion
 
         #region PUBLIC 
@@ -78,8 +76,6 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
             get { return _loginEnterText; }
             set { _loginEnterText = value; OnPropertyChanged(nameof(LoginWindowLoginEnterText)); }
         }
-
-
         public string ExceptionHelperText { get { return _exceptionHelperText; }
             set { _exceptionHelperText = value;OnPropertyChanged(nameof(ExceptionHelperText)); } }
         public string VerificationCodeTextBox
@@ -87,9 +83,11 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
             get { return _verificationCodeTextBox; }
             set { _verificationCodeTextBox = value; OnPropertyChanged(nameof(VerificationCodeTextBox)); }
         }
+        public string JoinWindowEnteredCode { get { return _joinWindowEnteredCode; } set { _joinWindowEnteredCode = value; OnPropertyChanged(nameof(JoinWindowEnteredCode)); } }
+        public string CodeHintText { get { return _codeHintText; } set { _codeHintText = value; OnPropertyChanged(nameof(CodeHintText)); } }
 
 
-        
+
         public SolidColorBrush EmailTextBoxForegroundBrush
         {
             get { return _emailTextBoxForegroundBrush; }
@@ -138,20 +136,13 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
 
         public int WindowHeight { get { return _windowHeight; } set { _windowHeight = value; OnPropertyChanged(nameof(WindowHeight)); } }
         public int WindowWidth { get { return _windowWidth; } set { _windowWidth = value; OnPropertyChanged(nameof(WindowWidth)); } }
-
         public int MinHeightRange { get { return _minHeightRange; } set { _minHeightRange = value; OnPropertyChanged(nameof(MinHeightRange)); } }
         public int MaxHeightRange { get { return _maxHeightRange; } set { _maxHeightRange = value; OnPropertyChanged(nameof(MaxHeightRange)); } }
         public int MinWidthRange { get { return _minWidthRange; } set { _minWidthRange = value; OnPropertyChanged(nameof(MinWidthRange)); } }
         public int MaxWidthRange { get { return _maxWidthRange; } set { _maxWidthRange = value; OnPropertyChanged(nameof(MaxWidthRange)); } }
-        public string JoinWindowEnteredCode { get { return _joinWindowEnteredCode; } set { _joinWindowEnteredCode = value; OnPropertyChanged(nameof(JoinWindowEnteredCode)); } }
-
-        
-
-        public string CodeHintText { get { return _codeHintText; } set { _codeHintText = value; OnPropertyChanged(nameof(CodeHintText)); } }
-        
-    
-
-
+     
+        public bool IsProgressRunning { get { return _isProgressRunning; } set { _isProgressRunning = value; IsMainWindowEnabled = !_isProgressRunning; OnPropertyChanged(nameof(IsProgressRunning)); OnPropertyChanged(nameof(IsMainWindowEnabled)); } }
+        public bool IsMainWindowEnabled { get { return _isMainWindowEnabled; } set { _isMainWindowEnabled = value; OnPropertyChanged(nameof(IsMainWindowEnabled)); } }
 
         #endregion
 
@@ -279,58 +270,72 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
             {
                 return new DelegateClickCommand((pass) =>
                 {
-                    passwordHash = hasher.GetHashedString((pass as PasswordBox).Password);
-                    pass = null;
-                    ResetAllColors();
-                    if (!Service.IsUserExistByLogin(LoginEnterText))
-                    {
+                    //Task.Factory.StartNew(() =>
+                    //{
+                    App.Current.Dispatcher.BeginInvoke(new Action(() => {
+                        IsProgressRunning = true;
+                        passwordHash = hasher.GetHashedString((pass as PasswordBox).Password);
 
-                        if (ValidateEmail())
+                        pass = null;
+                        ResetAllColors();
+                        lock (Service)
                         {
-                            ExceptionHelperText = "";
-                            if (!Service.IsUserExistByLogin(EmailEnterText))
+                            if (!Service.IsUserExistByLogin(LoginEnterText))
                             {
-                             if(   SendVerificationCode())
-                                {
-                                    OpenMailVerificationWindow();
-                                }
-                             else
-                                {
-                                    ExceptionHelperText = "Wrong email";
-                                    EmailTextBoxForegroundBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DDD80000"));
-                                }
 
+                                if (ValidateEmail())
+                                {
+                                    ExceptionHelperText = "";
+                                    if (!Service.IsUserExistByEmail(EmailEnterText))
+                                    {
+                                        if (SendVerificationCode())
+                                        {
+                                            OpenMailVerificationWindow();
+                                        }
+                                        else
+                                        {
+                                            ExceptionHelperText = "Wrong email";
+                                            EmailTextBoxForegroundBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DDD80000"));
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        ExceptionHelperText = "User with this email is alredy exist";
+                                        EmailTextBoxForegroundBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DDD80000"));
+                                    }
+
+                                }
+                                else
+                                {
+                                    EmailTextBoxForegroundBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DDD80000"));
+                                    ExceptionHelperText = "Wrong Email Entered";
+                                }
                             }
                             else
                             {
-                                ExceptionHelperText = "User with this email is alredy exist";
-                                EmailTextBoxForegroundBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DDD80000"));
+                                ExceptionHelperText = "User with this user name is alredy exist";
+                                LoginTextBoxForegroundBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DDD80000"));
                             }
-
                         }
-                        else
-                        {
-                            EmailTextBoxForegroundBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DDD80000"));
-                            ExceptionHelperText = "Wrong Email Entered";
-                        }
-                    }
-                    else
-                    {
-                        ExceptionHelperText = "User with this user name is alredy exist";
-                        LoginTextBoxForegroundBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DDD80000"));
-                    }
-
-
+                        IsProgressRunning = false;
+                    }));
+                    //});
                 });
+
             }
         }
-        public ICommand MainWindowLoginButtonClick
+       
+        public  ICommand MainWindowLoginButtonClick
         {
             get
             {
                 return new DelegateClickCommand((pass) =>
                 {
-                    CurrentLoginedUser = Service.LoginByLogin(hasher.GetHashedString((pass as PasswordBox).Password), LoginWindowLoginEnterText);
+                    IsProgressRunning = true;
+                    Thread t = new Thread(new ThreadStart(() =>
+                    {
+                        CurrentLoginedUser = Service.LoginByLogin(hasher.GetHashedString((pass as PasswordBox).Password), LoginWindowLoginEnterText);
                     if(CurrentLoginedUser==null)
                     {
                         CurrentLoginedUser = Service.LoginByEmail(hasher.GetHashedString((pass as PasswordBox).Password), LoginWindowLoginEnterText);
@@ -338,15 +343,20 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
                     if(CurrentLoginedUser==null)
                     {
                         ExceptionHelperText = "Wrong login or password";
-                        return;
+                            IsProgressRunning = false;
+                            return;
                     }
                     else
                     {
                         LoginWindowVisability = Visibility.Collapsed;
                         CreateJoinGridVisability = Visibility.Visible;
-                       // OpenGameMenu();
-                    }
-
+                        }
+                        IsProgressRunning = false;
+                    }));
+                    t.SetApartmentState(ApartmentState.STA);
+                    t.IsBackground = true;
+                    t.Start();
+                    
 
                 });
             }

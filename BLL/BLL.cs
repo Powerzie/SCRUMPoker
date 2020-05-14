@@ -23,6 +23,7 @@ namespace BLL
             return DAL.AddNewUser(new User()
             {
                 Id = user.Id,
+                RoomId=user.RoomId,
                 UserName = user.UserName,
                 Password = user.Password,
                 IsUserOnline = user.IsUserOnline
@@ -38,6 +39,7 @@ namespace BLL
                 return new UserDTO()
                 {
                     Id = returnedUser.Id,
+                    RoomId = returnedUser.RoomId,
                     UserName = returnedUser.UserName,
                     IsUserOnline = returnedUser.IsUserOnline,
                     Password = returnedUser.Password,
@@ -64,6 +66,7 @@ namespace BLL
                 return new UserDTO()
                 {
                     Id = returnedUser.Id,
+                    RoomId = returnedUser.RoomId,
                     UserName = returnedUser.UserName,
                     IsUserOnline = returnedUser.IsUserOnline,
                     Password = returnedUser.Password,
@@ -81,6 +84,7 @@ namespace BLL
                 return new UserDTO()
                 {
                     Id = returnedUser.Id,
+                    RoomId = returnedUser.RoomId,
                     UserName = returnedUser.UserName,
                     IsUserOnline = returnedUser.IsUserOnline,
                     Password = returnedUser.Password,
@@ -119,7 +123,7 @@ namespace BLL
                 return null;
             else
                 return new UserDTO()
-                { Id = returnedUser.Id, IsUserOnline = returnedUser.IsUserOnline, Password = returnedUser.Password, UserName = returnedUser.UserName };
+                { Id = returnedUser.Id, IsUserOnline = returnedUser.IsUserOnline, RoomId = returnedUser.RoomId, Password = returnedUser.Password, UserName = returnedUser.UserName };
         }
         public RoomDTO GetRoomByCode(int code)
         {
@@ -148,7 +152,7 @@ namespace BLL
             foreach (var it in res)
             {
                 listToReturn.Add(new UserDTO()
-                { Id = it.Id, IsUserOnline = it.IsUserOnline, Password = it.Password, UserName = it.UserName });
+                { Id = it.Id, IsUserOnline = it.IsUserOnline, RoomId = it.RoomId, Password = it.Password, UserName = it.UserName });
             }
             return listToReturn;
 

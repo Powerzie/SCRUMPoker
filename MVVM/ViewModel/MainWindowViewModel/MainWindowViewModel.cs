@@ -11,6 +11,7 @@ using System.Windows.Media;
 using SPWPF.Hashing;
 using System.Collections.ObjectModel;
 using SPWPF.CustomControls.RoomMember;
+using System.ServiceModel;
 
 namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
 {
@@ -40,7 +41,7 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
     }
     public partial class MainWindowViewModel : INotifyPropertyChanged
     {
-        
+        private static InstanceContext instance = new InstanceContext(new CallbackHandler());
         private Service1Client Service { get; set; }
         private Hasher hasher;
         public MainWindowViewModel()
@@ -51,8 +52,12 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
             OpenLoginAndRegisterMenu();
             currentWindowState = WindowStates.MainWindow;
             ChangeMainWindowState(currentWindowState);
+            CurrentJoinedRoom = new RoomDTO();
+            IsProgressRunning = false;
+            IsMainWindowEnabled = true;
             hasher = new Hasher();
-            Service = new Service1Client();
+            Service = new Service1Client(instance);
+            CallbackHandler.UpdateChatMembers += LoadRoomMembers;
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string prop)

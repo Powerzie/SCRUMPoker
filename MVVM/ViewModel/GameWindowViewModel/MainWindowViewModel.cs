@@ -8,15 +8,27 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
 {
+    public delegate void VoidDelegate();
+    class CallbackHandler : IService1Callback
+    {
+  
+        static public event VoidDelegate UpdateChatMembers;
 
+        void IService1Callback.UpdateChatMembers()
+        {
+            UpdateChatMembers();
+        }
+    }
     public partial class MainWindowViewModel
     {
         #region PROPERTIES
@@ -42,13 +54,15 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
        
         public void LoadRoomMembers()
         {
-            ListOfChatMembers.Add(new RoomMember(Service.GetRoomOwner(CurrentJoinedRoom.RoomCode), true));
-            foreach (var it in Service.GetChatMembersInRoom(CurrentJoinedRoom.RoomCode))
-            {
-                if(it.UserName!=CurrentLoginedUser.UserName)
-                ListOfChatMembers.Add(new RoomMember(it, false));
-            }
-
+            App.Current.Dispatcher.BeginInvoke(new Action(() => { 
+            ListOfChatMembers.Clear();
+                ListOfChatMembers.Add(new RoomMember(Service.GetRoomOwner(CurrentJoinedRoom.RoomCode), true));
+                foreach (var it in Service.GetChatMembersInRoom(CurrentJoinedRoom.RoomCode))
+                {
+                    if (it.Id != CurrentJoinedRoom.OwnerId)
+                        ListOfChatMembers.Add(new RoomMember(it, false));
+                }
+            }));
         }
         public ICommand JoinButtonClick
         {
@@ -57,7 +71,7 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
                 return new DelegateClickCommand((obj) =>
                 {
                    CurrentJoinedRoom= Service.JoinRoom(CurrentLoginedUser.Id,int.Parse(JoinWindowEnteredCode));
-                    LoadRoomMembers();
+                  //  LoadRoomMembers();
                     CodeHintText = CurrentJoinedRoom.RoomCode.ToString();
                     OpenGameMenu();
 
@@ -69,14 +83,19 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
                 {
                      get
                      {
-                        return new DelegateClickCommand((roomName) =>
-                        {
-                            CurrentJoinedRoom= Service.CreateNewRoom(CurrentLoginedUser.Id, (roomName as TextBox).Text);
-                            Service.JoinRoom(CurrentLoginedUser.Id, CurrentJoinedRoom.RoomCode);
-                            LoadRoomMembers();
-                            CodeHintText = CurrentJoinedRoom.RoomCode.ToString();
-                            OpenGameMenu();
-                        });
+                return new DelegateClickCommand((roomName) =>
+                {
+                    Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() => {
+                                IsProgressRunning = true;
+                             
+                                    CurrentJoinedRoom = Service.CreateNewRoom(CurrentLoginedUser.Id, (roomName as TextBox).Text);
+                                    Service.JoinRoom(CurrentLoginedUser.Id, CurrentJoinedRoom.RoomCode);
+                                //    LoadRoomMembers();
+                                    CodeHintText = CurrentJoinedRoom.RoomCode.ToString();
+                                IsProgressRunning = false;
+                                OpenGameMenu();
+                    }));
+                });
                      }
                 }
         

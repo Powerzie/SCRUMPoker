@@ -4,14 +4,12 @@ namespace SPWPF.MVVM.VIew
 {
     public partial class MainWindow : Window
     {
-        private ServiceReference1.Service1Client Service;
 
      
 
         public MainWindow()
         {
             InitializeComponent();
-            Service = new ServiceReference1.Service1Client();
 
             windowControlPanel.ButtonClose_MouseClick_Handler += ((obj , obj2) => { this.Close(); });
             windowControlPanel.ButtonMinimize_MouseClick_Handler += ((obj, obj2) => { this.WindowState = WindowState.Minimized; });
@@ -36,8 +34,9 @@ namespace SPWPF.MVVM.VIew
         private void OpenMainWindowMenu()
             {
             spLoginRegistrationWindow.Visibility = Visibility.Visible;
-            RegisterGrid.Visibility = Visibility.Collapsed;
-            LoginGrid.Visibility = Visibility.Visible;
+            RegisterGrid.Visibility = Visibility.Visible;
+            LoginGrid.Visibility = Visibility.Collapsed;
+            EmailCodeConfirmGrid.Visibility = Visibility.Collapsed;
            }
         private void OpenEmailVerification()
         {

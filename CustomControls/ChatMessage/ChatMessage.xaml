@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="SPWPF.CustomControls.ChatMessage.ChatMessage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SPWPF.CustomControls.ChatMessage"
+             mc:Ignorable="d"
+             
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:windowcontrolpanel="clr-namespace:StepChat.StepChatUI.CustomUIElement.WindowControlPanel"
+        xmlns:viewmodel="clr-namespace:SPWPF.MVVM.ViewModel.MainWindowViewModel"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+
+        
+     FontFamily="{DynamicResource MaterialDesignFont}" Height="59.391" Width="257.487"  
+             >
+    <Border CornerRadius="28" Background="{DynamicResource PrimaryHueDarkBrush}">
+    <DockPanel LastChildFill="False">
+        <Border Background="#FF0C570C" CornerRadius="35" DockPanel.Dock="Left" >
+            <Label Name="ShortName" FontSize="50" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontWeight="Bold">V</Label>
+        </Border>
+            <TextBlock Name="Message" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="20"  TextWrapping="Wrap">asd</TextBlock>
+    </DockPanel>
+    </Border>
+</UserControl>

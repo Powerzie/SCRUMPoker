@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" 
            WindowStyle="None"
+        IsEnabled="{Binding IsMainWindowEnabled}"
         d:DesignWidth="1500"
         AllowsTransparency="True"
         
@@ -39,13 +40,13 @@
             <RowDefinition Height="26"/>
             <RowDefinition Height="86*"/>
         </Grid.RowDefinitions>
-        <windowcontrolpanel:WindowControlPanel  x:Name="windowControlPanel"></windowcontrolpanel:WindowControlPanel>
+        <windowcontrolpanel:WindowControlPanel   x:Name="windowControlPanel"></windowcontrolpanel:WindowControlPanel>
 
-        <Grid Grid.Row="1" Name="GameWindow"   Visibility="{Binding GameWindowVisability}" Grid.RowSpan="2">
+        <Grid Grid.Row="1" Name="GameWindow"    Visibility="{Binding GameWindowVisability}" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="259*"/>
-                <ColumnDefinition Width="931*"/>
-                <ColumnDefinition Width="310*"/>
+                <ColumnDefinition Width="27*"/>
+                <ColumnDefinition Width="92*"/>
+                <ColumnDefinition Width="31*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="464*"/>
@@ -78,7 +79,7 @@
 
                 </Border>
                 <Border Margin="10" Background="{DynamicResource PrimaryHueLightBrush}" DockPanel.Dock="Bottom" CornerRadius="10">
-                    <ItemsControl  ></ItemsControl>
+                    <ItemsControl  ItemsSource="{Binding MessagesList}"></ItemsControl>
                 </Border>
             </DockPanel>
             <DockPanel Grid.Row="1" Grid.Column="1" Background="{DynamicResource PrimaryHueDarkBrush}" LastChildFill="False">
@@ -93,6 +94,10 @@
                 <RowDefinition Height="221*"/>
                 <RowDefinition Height="19*"/>
             </Grid.RowDefinitions>
+            <ProgressBar Grid.Row="1" VerticalAlignment="Center" Margin="0,-60,0,0" HorizontalAlignment="Center" Width="64" Height="64"
+  Style="{StaticResource MaterialDesignCircularProgressBar}"
+  Value="0"
+  IsIndeterminate="{Binding IsProgressRunning}" />
             <Grid Grid.RowSpan="2" Name="LoginGrid" Visibility="{Binding LoginWindowVisability,Mode=TwoWay}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="36*"/>
