@@ -45,29 +45,32 @@
 
         <Grid Grid.Row="1" Name="GameWindow"    Visibility="{Binding GameWindowVisability}" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="261*"/>
-                <ColumnDefinition Width="929*"/>
+                <ColumnDefinition Width="279*"/>
+                <ColumnDefinition Width="911*"/>
                 <ColumnDefinition Width="310*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="464*"/>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="439*"/>
                 <RowDefinition Height="45*"/>
             </Grid.RowDefinitions>
-            <Border Grid.Row="0"  HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,-1,0,0"  Background="Gray" Grid.RowSpan="2" Width="251">
-                <ScrollViewer>
-                <ItemsControl  Style="{x:Null}" Focusable="False" Margin="0,-2,1,0" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden"  ItemsSource="{Binding ListOfChatMembers}">
+            <DockPanel Name="CreatorMenu" Visibility="{Binding CreatorMenuVisability}" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="1" LastChildFill="False">
+                <Button Command="{Binding ShowAll}" DockPanel.Dock="Right" Margin="5">Show all</Button>
+                <Button Command="{Binding ResetAll}"  DockPanel.Dock="Right" Margin="5">Reset all</Button>
+            </DockPanel>
+            <Border Grid.Row="0" Grid.RowSpan="2"  HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,-1,0,0"  Background="{DynamicResource PrimaryHueMidBrush}"   Width="251">
+                <ItemsControl  Style="{x:Null}" Focusable="False" Margin="0,-2,1,0" ScrollViewer.CanContentScroll="False" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden"  ItemsSource="{Binding ListOfChatMembers}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <roommember:RoomMember Margin="0,0,0,5" ></roommember:RoomMember>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-                  
+
                 </ItemsControl>
-                </ScrollViewer>
 
             </Border>
-            <DockPanel Margin="0,-1,0,0" Grid.Column="2" Grid.RowSpan="2" Background="{DynamicResource PrimaryHueDarkBrush}">
-                <Button DockPanel.Dock="Bottom" Command="{Binding SendButtonClick}">Send</Button>
+            <DockPanel Margin="0,-1,0,0" Grid.Column="2" Grid.RowSpan="3" Background="{DynamicResource PrimaryHueDarkBrush}">
+                <Button DockPanel.Dock="Bottom" Command="{Binding SendButtonClick}" Margin="20,5,20,5">Send</Button>
                 <Border Margin="10" Background="{DynamicResource PrimaryHueLightBrush}" DockPanel.Dock="Bottom" CornerRadius="10">
                     <TextBox Padding="3" Text="{Binding EnteredMessage,Mode=TwoWay}"
     TextWrapping="Wrap"
@@ -82,13 +85,18 @@
                 </Border>
 
                 <Border Margin="10" Background="{DynamicResource PrimaryHueLightBrush}" DockPanel.Dock="Bottom" CornerRadius="10">
-                    <ItemsControl  ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" ItemsSource="{Binding MessagesList}"></ItemsControl>
+                    <ScrollViewer>
+                        <ItemsControl  ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="True" ItemsSource="{Binding MessagesList}"></ItemsControl>
+                    </ScrollViewer>
                 </Border>
             </DockPanel>
-            <DockPanel Grid.Row="1" Grid.Column="1" Background="{DynamicResource PrimaryHueDarkBrush}" LastChildFill="False">
-                <Label FontSize="30" DockPanel.Dock="Right" Content="{Binding CodeHintText}"></Label>
+            <DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Background="{DynamicResource PrimaryHueDarkBrush}" LastChildFill="False">
+                <Label FontSize="30" DockPanel.Dock="Left" VerticalContentAlignment="Center">Room code :</Label>
+                <Label FontSize="30" DockPanel.Dock="Left" VerticalContentAlignment="Center" Content="{Binding CodeHintText}"></Label>
+                <Label FontSize="30" DockPanel.Dock="Right" Content="{Binding RoomName,Mode=TwoWay}"></Label>
+
             </DockPanel>
-            <StackPanel Grid.Column="1" VerticalAlignment="Top" Orientation="Horizontal" Height="120" >
+            <StackPanel Grid.Column="1" VerticalAlignment="Top" Orientation="Horizontal" Height="120" Grid.RowSpan="2" >
                 <numchoiser:NumChoiser  VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="10"  NumberToSelect="1"></numchoiser:NumChoiser>
                 <numchoiser:NumChoiser VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10"  NumberToSelect="2"></numchoiser:NumChoiser>
                 <numchoiser:NumChoiser VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10"  NumberToSelect="3"></numchoiser:NumChoiser>
@@ -101,7 +109,7 @@
 
         </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="0" d:IsHidden="True"  Name="spLoginRegistrationWindow"  Background="#FFD6E0E4" Visibility="{Binding LoginRegisterVisability}" Grid.RowSpan="2">
+        <Grid Grid.Row="1" Grid.Column="0"  d:IsHidden="True" Name="spLoginRegistrationWindow"  Background="#FFD6E0E4" Visibility="{Binding LoginRegisterVisability}" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="36*"/>
                 <RowDefinition Height="221*"/>
@@ -270,6 +278,7 @@
                     <RowDefinition Height="97*"/>
                     <RowDefinition Height="31*"/>
                 </Grid.RowDefinitions>
+                <Label Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25">Welcom to Scrum Poker ++ </Label>
                 <DockPanel  Margin="0,50,0,0" Grid.Row="2">
                     <Button  Name="JoinRoomButton"   Margin="30,0,0,0" DockPanel.Dock="Left" Width="140" FontSize="20" Content="Join Room"  Click="JoinRoom_Click" >
                         <Button.Template>

@@ -18,7 +18,7 @@ namespace SPWPF.CustomControls.RoomMember
 {
     public partial class RoomMember : UserControl
     {
-        private int selectedNumber;
+        private int? selectedNumber;
         private int _userId { get; set; }
         public int UserId { get { return _userId; } }
         public RoomMember()
@@ -36,9 +36,15 @@ namespace SPWPF.CustomControls.RoomMember
             else CrownImage.Visibility = Visibility.Collapsed;
 
         }
-        public void SetUserSelectedNum(int num)
+        public void SetUserSelectedNum(int? num)
         {
+            if(num==null)
+            {
+                selectedNumber = 0;
+            }
             selectedNumber = num;
+            choisedNum.Content = "?";
+            choisedNumBorder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF607D8B"));
         }
         public void ShowSelectedNumber()
         {

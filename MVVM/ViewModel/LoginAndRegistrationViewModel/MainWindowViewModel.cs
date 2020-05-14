@@ -257,9 +257,11 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
             {
                 return new DelegateClickCommand((obj) =>
                 {
-                    //if (hasher.GetHashedString(VerificationCodeTextBox) == verCode)
-                    //{
-                       if( Service.RegisterNewUser(LoginEnterText, EmailEnterText, passwordHash))
+                    ThreadPool.QueueUserWorkItem((bj) => {
+
+                        //if (hasher.GetHashedString(VerificationCodeTextBox) == verCode)
+                        //{
+                        if ( Service.RegisterNewUser(LoginEnterText, EmailEnterText, passwordHash))
                         {
                         ExceptionHelperText = "";
                         OpenLoginAndRegisterMenu();
@@ -269,6 +271,7 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
                     {
                         ExceptionHelperText = "Invalid code";
                     }
+                    });
                 });
             }
         }
@@ -278,10 +281,12 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
             {
                 return new DelegateClickCommand((pass) =>
                 {
-                    //Task.Factory.StartNew(() =>
-                    //{
-                    App.Current.Dispatcher.BeginInvoke(new Action(() => {
-                        IsProgressRunning = true;
+                    IsProgressRunning = true;
+                    Thread t = new Thread(new ThreadStart(() =>
+                    {
+                    
+                        App.Current.Dispatcher.BeginInvoke(new Action(() =>
+                    {
                         passwordHash = hasher.GetHashedString((pass as PasswordBox).Password);
 
                         pass = null;
@@ -328,7 +333,11 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
                         }
                         IsProgressRunning = false;
                     }));
-                    //});
+                  }));
+                    t.SetApartmentState(ApartmentState.STA);
+                    t.IsBackground = true;
+                    t.Start();
+
                 });
 
             }

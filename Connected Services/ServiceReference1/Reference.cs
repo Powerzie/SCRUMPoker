@@ -322,6 +322,24 @@ namespace SPWPF.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetSelectedNumberByUserId", ReplyAction="http://tempuri.org/IService1/SetSelectedNumberByUserIdResponse")]
         System.Threading.Tasks.Task<bool> SetSelectedNumberByUserIdAsync(int userId, int number);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SendShowAllNumbersInRoomRequest", ReplyAction="http://tempuri.org/IService1/SendShowAllNumbersInRoomRequestResponse")]
+        void SendShowAllNumbersInRoomRequest(int roomId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SendShowAllNumbersInRoomRequest", ReplyAction="http://tempuri.org/IService1/SendShowAllNumbersInRoomRequestResponse")]
+        System.Threading.Tasks.Task SendShowAllNumbersInRoomRequestAsync(int roomId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SendResetAllNumbersInRoomRequest", ReplyAction="http://tempuri.org/IService1/SendResetAllNumbersInRoomRequestResponse")]
+        void SendResetAllNumbersInRoomRequest(int roomId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SendResetAllNumbersInRoomRequest", ReplyAction="http://tempuri.org/IService1/SendResetAllNumbersInRoomRequestResponse")]
+        System.Threading.Tasks.Task SendResetAllNumbersInRoomRequestAsync(int roomId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Logout", ReplyAction="http://tempuri.org/IService1/LogoutResponse")]
+        void Logout(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Logout", ReplyAction="http://tempuri.org/IService1/LogoutResponse")]
+        System.Threading.Tasks.Task LogoutAsync(int userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -335,6 +353,18 @@ namespace SPWPF.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateSelectNumbers", ReplyAction="http://tempuri.org/IService1/UpdateSelectNumbersResponse")]
         void UpdateSelectNumbers(int userId, int number);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ShowAllNumbersInRoom", ReplyAction="http://tempuri.org/IService1/ShowAllNumbersInRoomResponse")]
+        void ShowAllNumbersInRoom();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ResetAllNumbersInRoom", ReplyAction="http://tempuri.org/IService1/ResetAllNumbersInRoomResponse")]
+        void ResetAllNumbersInRoom();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ShowLargestSelectedNumber", ReplyAction="http://tempuri.org/IService1/ShowLargestSelectedNumberResponse")]
+        void ShowLargestSelectedNumber(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ShowSmallestSelectedNumber", ReplyAction="http://tempuri.org/IService1/ShowSmallestSelectedNumberResponse")]
+        void ShowSmallestSelectedNumber(int userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -459,6 +489,30 @@ namespace SPWPF.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> SetSelectedNumberByUserIdAsync(int userId, int number) {
             return base.Channel.SetSelectedNumberByUserIdAsync(userId, number);
+        }
+        
+        public void SendShowAllNumbersInRoomRequest(int roomId) {
+            base.Channel.SendShowAllNumbersInRoomRequest(roomId);
+        }
+        
+        public System.Threading.Tasks.Task SendShowAllNumbersInRoomRequestAsync(int roomId) {
+            return base.Channel.SendShowAllNumbersInRoomRequestAsync(roomId);
+        }
+        
+        public void SendResetAllNumbersInRoomRequest(int roomId) {
+            base.Channel.SendResetAllNumbersInRoomRequest(roomId);
+        }
+        
+        public System.Threading.Tasks.Task SendResetAllNumbersInRoomRequestAsync(int roomId) {
+            return base.Channel.SendResetAllNumbersInRoomRequestAsync(roomId);
+        }
+        
+        public void Logout(int userId) {
+            base.Channel.Logout(userId);
+        }
+        
+        public System.Threading.Tasks.Task LogoutAsync(int userId) {
+            return base.Channel.LogoutAsync(userId);
         }
     }
 }

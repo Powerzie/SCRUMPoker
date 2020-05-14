@@ -62,6 +62,15 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
             CallbackHandler.UpdateChatMembers += LoadRoomMembers;
             CallbackHandler.ReciveMessage += ReciveMessage;
             CallbackHandler.UpdateSelectedNumbers += UpdateSelectednumbers;
+            CallbackHandler.ResetAllNums += ResetAllNums;
+            CallbackHandler.ShowAllNums += ShowAllNums;
+            CallbackHandler.ShowLargestNumber += ShowMaxNumber;
+            CallbackHandler.ShowSmallesNumber += ShowMinNumber;
+        }
+         ~MainWindowViewModel()
+        {
+            if(CurrentLoginedUser!=null)
+            Service.Logout(CurrentLoginedUser.Id);
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string prop)
@@ -97,6 +106,7 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
             JoinGridVisability = Visibility.Collapsed;
             EmailCodeConfirmGrid = Visibility.Collapsed;
             RegisterGridVisability = Visibility.Collapsed;
+            CreatorMenuVisability = Visibility.Collapsed;
         }
         private void OpenRegistrationWindow()
         {
@@ -108,6 +118,7 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
             CloseAllWindows();
             EmailCodeConfirmGrid = Visibility.Visible;
         }
+
 
         public ICommand MainWindow_SendMessageButtonClick
         {

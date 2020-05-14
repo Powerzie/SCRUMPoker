@@ -23,10 +23,11 @@ namespace BLL
             return DAL.AddNewUser(new User()
             {
                 Id = user.Id,
-                RoomId=user.RoomId,
+                RoomId = user.RoomId,
                 UserName = user.UserName,
                 Password = user.Password,
-                IsUserOnline = user.IsUserOnline
+                EmailUser = user.Email,
+                IsUserOnline = false
             });
         }
         public UserDTO GetUserById(int id)
@@ -54,6 +55,10 @@ namespace BLL
         public bool IsUserExistByEmail(string email)
         {
             return DAL.IsUserExistByEmail(email);
+        }
+        public void Logout(int userId)
+        {
+            DAL.Logout(userId);
         }
         public UserDTO LoginByEmail(string hashedPass, string Email)
         {
