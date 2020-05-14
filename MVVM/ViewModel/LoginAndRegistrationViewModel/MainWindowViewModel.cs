@@ -259,15 +259,15 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
                 {
                     ThreadPool.QueueUserWorkItem((bj) => {
 
-                        //if (hasher.GetHashedString(VerificationCodeTextBox) == verCode)
-                        //{
+                    //if (hasher.GetHashedString(VerificationCodeTextBox) == verCode)
+                    //{
                         if ( Service.RegisterNewUser(LoginEnterText, EmailEnterText, passwordHash))
                         {
                         ExceptionHelperText = "";
                         OpenLoginAndRegisterMenu();
                         }
-                   // }
-                    else
+                        //}
+                        else
                     {
                         ExceptionHelperText = "Invalid code";
                     }

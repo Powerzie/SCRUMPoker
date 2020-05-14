@@ -108,7 +108,8 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
 
         private void LoadRoomMembers()
         {
-            App.Current.Dispatcher.BeginInvoke(new Action(() => { 
+            ThreadPool.QueueUserWorkItem((bj) => {
+                App.Current.Dispatcher.BeginInvoke(new Action(() => { 
             ListOfChatMembers.Clear();
                 ListOfChatMembers.Add(new RoomMember(Service.GetRoomOwner(CurrentJoinedRoom.RoomCode), true));
                 foreach (var it in Service.GetChatMembersInRoom(CurrentJoinedRoom.RoomCode))
@@ -116,7 +117,9 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
                     if (it.Id != CurrentJoinedRoom.OwnerId)
                         ListOfChatMembers.Add(new RoomMember(it, false));
                 }
+
             }));
+            });
         }
         private void UpdateSelectednumbers(int userId, int number)
         {
@@ -217,7 +220,7 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
                      {
                 return new DelegateClickCommand((roomName) =>
                 {
-                    Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() => {
+                    Dispatcher.CurrentDispatcher.Invoke(new Action(() => {
                                 IsProgressRunning = true;
                              
                                     CurrentJoinedRoom = Service.CreateNewRoom(CurrentLoginedUser.Id, (roomName as TextBox).Text);

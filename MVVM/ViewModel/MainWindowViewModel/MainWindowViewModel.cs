@@ -69,8 +69,8 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
         }
          ~MainWindowViewModel()
         {
-            if(CurrentLoginedUser!=null)
-            Service.Logout(CurrentLoginedUser.Id);
+            //if(CurrentLoginedUser!=null)
+            //Service.Logout(CurrentLoginedUser.Id);
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string prop)
