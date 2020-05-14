@@ -98,6 +98,8 @@ namespace BLL
         public RoomDTO CreateNewRoom(int ownerID,string roomName)
         {
             Room returnedRoom = DAL.CreateNewRoom(ownerID, roomName);
+            if (returnedRoom == null)
+                return null;
             return new RoomDTO() { Id = returnedRoom.Id, NameOfRoom = returnedRoom.NameOfRoom, OwnerId = returnedRoom.OwnerId, RoomCode = returnedRoom.RoomCode };
 
         }

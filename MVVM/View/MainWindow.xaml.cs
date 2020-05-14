@@ -34,8 +34,8 @@ namespace SPWPF.MVVM.VIew
         private void OpenMainWindowMenu()
             {
             spLoginRegistrationWindow.Visibility = Visibility.Visible;
-            RegisterGrid.Visibility = Visibility.Visible;
-            LoginGrid.Visibility = Visibility.Collapsed;
+            RegisterGrid.Visibility = Visibility.Collapsed;
+            LoginGrid.Visibility = Visibility.Visible;
             EmailCodeConfirmGrid.Visibility = Visibility.Collapsed;
            }
         private void OpenEmailVerification()

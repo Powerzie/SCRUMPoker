@@ -72,6 +72,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CustomControls\NumChoiser\NumChoiser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomControls\RoomMember\RoomMember.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -95,6 +99,9 @@
     </Compile>
     <Compile Include="CustomControls\ChatMessage\ChatMessage.xaml.cs">
       <DependentUpon>ChatMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\NumChoiser\NumChoiser.xaml.cs">
+      <DependentUpon>NumChoiser.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\RoomMember\RoomMember.xaml.cs">
       <DependentUpon>RoomMember.xaml</DependentUpon>

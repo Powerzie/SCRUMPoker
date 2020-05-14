@@ -288,13 +288,22 @@ namespace SPWPF.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetRoomOwner", ReplyAction="http://tempuri.org/IService1/GetRoomOwnerResponse")]
         System.Threading.Tasks.Task<SPWPF.ServiceReference1.UserDTO> GetRoomOwnerAsync(int roomCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SendMessage", ReplyAction="http://tempuri.org/IService1/SendMessageResponse")]
+        void SendMessage(int roomCode, string message, int fromUserId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SendMessage", ReplyAction="http://tempuri.org/IService1/SendMessageResponse")]
+        System.Threading.Tasks.Task SendMessageAsync(int roomCode, string message, int fromUserId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IService1Callback {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateChatMembers", ReplyAction="http://tempuri.org/IService1/UpdateChatMembersResponse")]
-        void UpdateChatMembers();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateRoomMembers", ReplyAction="http://tempuri.org/IService1/UpdateRoomMembersResponse")]
+        void UpdateRoomMembers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateChatMessages", ReplyAction="http://tempuri.org/IService1/UpdateChatMessagesResponse")]
+        void UpdateChatMessages(string message, string from);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -395,6 +404,14 @@ namespace SPWPF.ServiceReference1 {
         
         public System.Threading.Tasks.Task<SPWPF.ServiceReference1.UserDTO> GetRoomOwnerAsync(int roomCode) {
             return base.Channel.GetRoomOwnerAsync(roomCode);
+        }
+        
+        public void SendMessage(int roomCode, string message, int fromUserId) {
+            base.Channel.SendMessage(roomCode, message, fromUserId);
+        }
+        
+        public System.Threading.Tasks.Task SendMessageAsync(int roomCode, string message, int fromUserId) {
+            return base.Channel.SendMessageAsync(roomCode, message, fromUserId);
         }
     }
 }

@@ -12,6 +12,7 @@ using SPWPF.Hashing;
 using System.Collections.ObjectModel;
 using SPWPF.CustomControls.RoomMember;
 using System.ServiceModel;
+using SPWPF.CustomControls.ChatMessage;
 
 namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
 {
@@ -49,6 +50,7 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
             EmailTextBoxForegroundBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DD000000"));
             LoginTextBoxForegroundBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DD000000"));
             ListOfChatMembers = new ObservableCollection<RoomMember>();
+            MessagesList = new ObservableCollection<ChatMessage>();
             OpenLoginAndRegisterMenu();
             currentWindowState = WindowStates.MainWindow;
             ChangeMainWindowState(currentWindowState);
@@ -58,6 +60,7 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
             hasher = new Hasher();
             Service = new Service1Client(instance);
             CallbackHandler.UpdateChatMembers += LoadRoomMembers;
+            CallbackHandler.ReciveMessage += ReciveMessage;
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string prop)

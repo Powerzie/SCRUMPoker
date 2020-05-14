@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\SCRUMPoker\SPWPF\App.xaml
-4-1459953814
+5613651122
 
-18815120391
+19-1459575817
 18-1362007505
-CustomControls\ChatMessage\ChatMessage.xaml;CustomControls\RoomMember\RoomMember.xaml;CustomControls\WindowControlPanel\WindowControlPanel.xaml;MVVM\View\MainWindow.xaml;
+CustomControls\ChatMessage\ChatMessage.xaml;CustomControls\NumChoiser\NumChoiser.xaml;CustomControls\RoomMember\RoomMember.xaml;CustomControls\WindowControlPanel\WindowControlPanel.xaml;MVVM\View\MainWindow.xaml;
 
-False
+True
 

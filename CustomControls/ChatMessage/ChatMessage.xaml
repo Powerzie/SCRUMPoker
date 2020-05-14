@@ -18,12 +18,12 @@
         
      FontFamily="{DynamicResource MaterialDesignFont}" Height="59.391" Width="257.487"  
              >
-    <Border CornerRadius="28" Background="{DynamicResource PrimaryHueDarkBrush}">
+    <Border  Background="{DynamicResource PrimaryHueDarkBrush}">
     <DockPanel LastChildFill="False">
-        <Border Background="#FF0C570C" CornerRadius="35" DockPanel.Dock="Left" >
-            <Label Name="ShortName" FontSize="50" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontWeight="Bold">V</Label>
+        <Border Background="#FF0C570C" CornerRadius="35" DockPanel.Dock="Left" Width="65" >
+            <Label Name="ShortName" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">V</Label>
         </Border>
-            <TextBlock Name="Message" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="20"  TextWrapping="Wrap">asd</TextBlock>
+            <TextBlock Name="Message" DockPanel.Dock="Left" VerticalAlignment="Top" Margin="5,0,0,0" FontSize="20"  TextWrapping="Wrap">asd</TextBlock>
     </DockPanel>
     </Border>
 </UserControl>

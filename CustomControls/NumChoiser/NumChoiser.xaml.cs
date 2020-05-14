@@ -13,18 +13,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SPWPF.CustomControls.ChatMessage
+namespace SPWPF.CustomControls.NumChoiser
 {
     /// <summary>
-    /// Interaction logic for ChatMessage.xaml
+    /// Interaction logic for NumChoiser.xaml
     /// </summary>
-    public partial class ChatMessage : UserControl
+    public partial class NumChoiser : UserControl
     {
-        public ChatMessage(string username,string message)
+        public string _numberToSelect{get;set;}
+         public  string NumberToSelect { get { return _numberToSelect; } set { _numberToSelect = value; NumText.Content = _numberToSelect; } }
+        public NumChoiser(int num)
         {
             InitializeComponent();
-            ShortName.Content = username[0];
-            Message.Text = message;
+            NumberToSelect = num.ToString();
+        }
+        public NumChoiser()
+        {
+            InitializeComponent();
         }
     }
 }

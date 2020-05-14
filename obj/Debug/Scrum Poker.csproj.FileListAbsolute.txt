@@ -7,6 +7,9 @@ D:\SCRUMPoker\SPWPF\bin\Debug\MaterialDesignThemes.Wpf.dll
 D:\SCRUMPoker\SPWPF\bin\Debug\MaterialDesignColors.pdb
 D:\SCRUMPoker\SPWPF\bin\Debug\MaterialDesignThemes.Wpf.pdb
 D:\SCRUMPoker\SPWPF\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\SCRUMPoker\SPWPF\obj\Debug\Scrum Poker.csprojAssemblyReference.cache
+D:\SCRUMPoker\SPWPF\obj\Debug\CustomControls\ChatMessage\ChatMessage.g.cs
+D:\SCRUMPoker\SPWPF\obj\Debug\CustomControls\NumChoiser\NumChoiser.g.cs
 D:\SCRUMPoker\SPWPF\obj\Debug\CustomControls\RoomMember\RoomMember.g.cs
 D:\SCRUMPoker\SPWPF\obj\Debug\CustomControls\WindowControlPanel\WindowControlPanel.g.cs
 D:\SCRUMPoker\SPWPF\obj\Debug\MVVM\View\MainWindow.g.cs
@@ -15,6 +18,8 @@ D:\SCRUMPoker\SPWPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\SCRUMPoker\SPWPF\obj\Debug\SPWPF_MarkupCompile.cache
 D:\SCRUMPoker\SPWPF\obj\Debug\SPWPF_MarkupCompile.lref
 D:\SCRUMPoker\SPWPF\obj\Debug\App.baml
+D:\SCRUMPoker\SPWPF\obj\Debug\CustomControls\ChatMessage\ChatMessage.baml
+D:\SCRUMPoker\SPWPF\obj\Debug\CustomControls\NumChoiser\NumChoiser.baml
 D:\SCRUMPoker\SPWPF\obj\Debug\CustomControls\RoomMember\RoomMember.baml
 D:\SCRUMPoker\SPWPF\obj\Debug\CustomControls\WindowControlPanel\WindowControlPanel.baml
 D:\SCRUMPoker\SPWPF\obj\Debug\MVVM\View\MainWindow.baml

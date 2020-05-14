@@ -15,6 +15,7 @@
         xmlns:windowcontrolpanel="clr-namespace:StepChat.StepChatUI.CustomUIElement.WindowControlPanel"
         xmlns:viewmodel="clr-namespace:SPWPF.MVVM.ViewModel.MainWindowViewModel"
         xmlns:roommember="clr-namespace:SPWPF.CustomControls.RoomMember"
+        xmlns:numchoiser="clr-namespace:SPWPF.CustomControls.NumChoiser"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
      TextElement.FontSize="13"
@@ -44,9 +45,9 @@
 
         <Grid Grid.Row="1" Name="GameWindow"    Visibility="{Binding GameWindowVisability}" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="27*"/>
-                <ColumnDefinition Width="92*"/>
-                <ColumnDefinition Width="31*"/>
+                <ColumnDefinition Width="261*"/>
+                <ColumnDefinition Width="929*"/>
+                <ColumnDefinition Width="310*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="464*"/>
@@ -65,8 +66,9 @@
 
             </Border>
             <DockPanel Margin="0,-1,0,0" Grid.Column="2" Grid.RowSpan="2" Background="{DynamicResource PrimaryHueDarkBrush}">
+                <Button DockPanel.Dock="Bottom" Command="{Binding SendButtonClick}">Send</Button>
                 <Border Margin="10" Background="{DynamicResource PrimaryHueLightBrush}" DockPanel.Dock="Bottom" CornerRadius="10">
-                    <TextBox Padding="3"
+                    <TextBox Padding="3" Text="{Binding EnteredMessage,Mode=TwoWay}"
     TextWrapping="Wrap"
     VerticalAlignment="Stretch"
     MinWidth="280"
@@ -76,15 +78,25 @@
     materialDesign:HintAssist.Hint="Multiline text"
     Height="80">
                     </TextBox>
-
                 </Border>
+
                 <Border Margin="10" Background="{DynamicResource PrimaryHueLightBrush}" DockPanel.Dock="Bottom" CornerRadius="10">
-                    <ItemsControl  ItemsSource="{Binding MessagesList}"></ItemsControl>
+                    <ItemsControl  ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" ItemsSource="{Binding MessagesList}"></ItemsControl>
                 </Border>
             </DockPanel>
             <DockPanel Grid.Row="1" Grid.Column="1" Background="{DynamicResource PrimaryHueDarkBrush}" LastChildFill="False">
                 <Label FontSize="30" DockPanel.Dock="Right" Content="{Binding CodeHintText}"></Label>
             </DockPanel>
+            <StackPanel Grid.Column="1" VerticalAlignment="Top" Orientation="Horizontal" Height="120" >
+                <numchoiser:NumChoiser VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10"  NumberToSelect="1"></numchoiser:NumChoiser>
+                <numchoiser:NumChoiser VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10"  NumberToSelect="2"></numchoiser:NumChoiser>
+                <numchoiser:NumChoiser VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10"  NumberToSelect="3"></numchoiser:NumChoiser>
+                <numchoiser:NumChoiser VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10"  NumberToSelect="5"></numchoiser:NumChoiser>
+                <numchoiser:NumChoiser VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10"  NumberToSelect="8"></numchoiser:NumChoiser>
+                <numchoiser:NumChoiser VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10"  NumberToSelect="13"></numchoiser:NumChoiser>
+                <numchoiser:NumChoiser VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10"  NumberToSelect="21"></numchoiser:NumChoiser>
+            </StackPanel>
+
 
         </Grid>
 

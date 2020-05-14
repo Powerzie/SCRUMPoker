@@ -1,4 +1,5 @@
 ﻿using EASendMail;
+using SPWPF.CustomControls.ChatMessage;
 using SPWPF.ServiceReference1;
 using System;
 using System.Collections.Generic;
@@ -238,7 +239,13 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
             currentWindowState = WindowStates.GameWindow;
             ChangeMainWindowState(currentWindowState);
         }
-        
+        private void ReciveMessage(string message,string from)
+        {
+            App.Current.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                MessagesList.Add(new ChatMessage(from, message));
+            }));
+        }
 
 
 
@@ -254,7 +261,8 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
                     //{
                        if( Service.RegisterNewUser(LoginEnterText, EmailEnterText, passwordHash))
                         {
-                            OpenLoginAndRegisterMenu();
+                        ExceptionHelperText = "";
+                        OpenLoginAndRegisterMenu();
                         }
                    // }
                     else
@@ -325,7 +333,6 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
 
             }
         }
-       
         public  ICommand MainWindowLoginButtonClick
         {
             get
@@ -350,6 +357,7 @@ namespace SPWPF.MVVM.ViewModel.MainWindowViewModel
                     {
                         LoginWindowVisability = Visibility.Collapsed;
                         CreateJoinGridVisability = Visibility.Visible;
+                            ExceptionHelperText = "";
                         }
                         IsProgressRunning = false;
                     }));
